@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Earnify - Earn Coins</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.light-theme { background-color: #F8F9FA; color: #2C3E50; --surface: #FFFFFF; --border: #E9ECEF; --shadow: 0 8px 20px rgba(0,0,0,0.05); }
+    body.dark-theme { background-color: #1B2631; color: #FDFEFE; --surface: #283747; --border: #566573; --shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    #app { max-width: 500px; margin: 0 auto; padding-bottom: 80px; display: none; }
+    .top-bar { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: linear-gradient(135deg, #E74C3C, #F39C12); color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .top-left { display: flex; align-items: center; gap: 12px; }
+    .user-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid white; background: #fff; }
+    .user-info { line-height: 1.2; }
+    .user-name { font-weight: 700; font-size: 1rem; }
+    .main-balance { font-size: 0.8rem; opacity: 0.9; }
+    .main-balance span { font-weight: 700; font-size: 1rem; }
+    .wallet-icon { background: rgba(255,255,255,0.2); width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 30px; cursor: pointer; transition: transform 0.2s; }
+    .wallet-icon i { font-size: 1.4rem; }
+    .wallet-icon:active { transform: scale(0.95); }
+    .page { display: none; padding: 16px; animation: fadeIn 0.3s ease; }
+    .page.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+    .card { background: var(--surface); border-radius: 20px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+    .stat-card { padding: 15px; border-radius: 16px; text-align: center; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .stat-card h4 { font-size: 0.75rem; text-transform: uppercase; opacity: 0.7; margin-bottom: 8px; }
+    .stat-card p { font-size: 1.3rem; font-weight: 700; color: #E74C3C; }
+    .task-container { display: flex; align-items: center; gap: 15px; padding: 12px 15px; border-radius: 20px; margin-bottom: 12px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform 0.2s; }
+    .task-container:active { transform: scale(0.99); }
+    .task-icon-img { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; }
+    .task-info { flex: 1; }
+    .task-info h3 { font-size: 1rem; font-weight: 600; }
+    .task-info p { font-size: 0.75rem; opacity: 0.7; }
+    .action-btn { padding: 8px 20px; background: linear-gradient(45deg, #E74C3C, #F39C12); border: none; border-radius: 40px; color: white; font-weight: 600; cursor: pointer; transition: all 0.2s; font-size: 0.8rem; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .action-btn:active { transform: scale(0.96); }
+    .action-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .progress-container { margin: 15px 0; }
+    .progress-info { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; }
+    .progress-bar-bg { height: 8px; background: #ddd; border-radius: 10px; overflow: hidden; }
+    .progress-bar-fg { height: 100%; background: linear-gradient(90deg, #E74C3C, #F39C12); width: 0%; border-radius: 10px; }
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; max-width: 500px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; height: 75px; background: #1a1a1a; color: white; z-index: 1000; border-top: 1px solid rgba(255,255,255,0.1); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 0 10px; }
+    .nav-btn { background: none; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: inherit; font-size: 0.7rem; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; flex: 1; height: 100%; }
+    .nav-btn i { font-size: 1.4rem; margin-bottom: 4px; }
+    .nav-btn.active { color: #F39C12; }
+    .home-nav-btn .home-icon-wrapper { width: 54px; height: 54px; background: linear-gradient(135deg, #E74C3C, #F39C12); border-radius: 18px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(231,76,60,0.4); margin-bottom: 2px; transition: all 0.3s; }
+    .home-nav-btn.active .home-icon-wrapper { transform: translateY(-10px) scale(1.1); }
+    .daily-checkin-card { background: linear-gradient(135deg, #2ECC7120, #27AE6020); border: 1px solid #27AE6040; border-radius: 20px; padding: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .profile-header-premium { text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #E74C3C10, #F39C1210); border: 1px solid var(--border); border-radius: 24px; margin-bottom: 20px; }
+    .profile-avatar-large { width: 100px; height: 100px; border-radius: 50%; border: 4px solid white; margin: 0 auto 15px; object-fit: cover; background: #fff; }
+    .referral-card-premium { background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-radius: 24px; padding: 20px; color: white; text-align: center; margin-bottom: 20px; box-shadow: var(--shadow); }
+    .referral-link-box { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 16px; padding: 12px; display: flex; gap: 10px; margin-bottom: 15px; }
+    .referral-link-box input { background: none; border: none; color: white; font-size: 0.85rem; flex: 1; outline: none; font-family: monospace; }
+    .copy-btn-premium { background: white; color: #2575fc; border: none; border-radius: 12px; padding: 8px 15px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+    .copy-btn-premium:active { transform: scale(0.96); }
+    .methods-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 15px 0; }
+    .method-card-item { text-align: center; background: var(--surface); padding: 12px; border-radius: 20px; cursor: pointer; border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform 0.2s; }
+    .method-card-item:active { transform: scale(0.96); }
+    .method-card-item img { width: 70px; height: 70px; object-fit: contain; border-radius: 12px; margin-bottom: 5px; }
+    .history-item { padding: 12px; border-radius: 16px; background: var(--surface); margin-bottom: 10px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .earning-wallet-card { background: linear-gradient(135deg, #E74C3C20, #F39C1220); border-radius: 20px; padding: 12px 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(231,76,60,0.2); }
+    .earning-wallet-card h3 { font-size: 0.9rem; margin-bottom: 4px; }
+    .earning-wallet-card p { font-size: 1.4rem; font-weight: 700; color: #E74C3C; }
+    .loader-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: #FDFEFE; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    body.dark-theme .loader-screen { background: #1B2631; }
+    .spinner { width: 50px; height: 50px; border: 4px solid #E74C3C20; border-top: 4px solid #E74C3C; border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .support-link-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+    .support-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 12px; text-align: center; text-decoration: none; color: inherit; transition: 0.2s; box-shadow: var(--shadow); }
+    .support-card:active { transform: scale(0.98); }
+    .support-card img { width: 50px; height: 50px; border-radius: 12px; margin-bottom: 8px; }
+    .support-card span { display: block; font-weight: 500; font-size: 0.8rem; }
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 2000; }
+    .modal-container { background: var(--surface); border-radius: 28px; width: 90%; max-width: 400px; max-height: 85vh; overflow-y: auto; padding: 20px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    .close-modal { float: right; font-size: 1.5rem; cursor: pointer; }
+    .ad-buttons-row { display: flex; gap: 12px; margin: 15px 0; }
+    .ad-buttons-row .action-btn { flex: 1; text-align: center; }
+  </style>
+</head>
+<body>
+<div id="loader-screen" class="loader-screen"><div class="spinner"></div><p id="loading-text">Loading Earnify...</p><p id="loading-progress">0%</p></div>
+<div id="app">
+  <div class="top-bar">
+    <div class="top-left">
+      <img id="user-photo" class="user-avatar" src="https://via.placeholder.com/44">
+      <div class="user-info">
+        <div class="user-name" id="user-name">User</div>
+        <div class="main-balance"><span id="main-balance">0</span> Coins</div>
+      </div>
+    </div>
+    <div class="wallet-icon" id="wallet-icon"><i class="fas fa-wallet"></i></div>
+  </div>
+  <main>
+    <div id="home-page" class="page active">
+      <div class="earning-wallet-card">
+        <div><h3><i class="fas fa-coins"></i> Earning Wallet</h3><small>Min 100 to move</small></div>
+        <div><p><span id="earning-wallet-balance">0</span> Coins</p><button id="move-to-balance-btn" class="action-btn" style="padding:4px 12px;">Move</button></div>
+      </div>
+      <div id="daily-checkin-container"></div>
+      <div id="ad-progress-container"></div>
+      <!-- Two separate ad buttons -->
+      <div class="ad-buttons-row">
+        <button id="watch-monetag-btn" class="action-btn">💰 Monetag Watch Ad</button>
+        <button id="watch-gigapub-btn" class="action-btn">📺 Gigapub Watch Ad</button>
+      </div>
+    </div>
+    <div id="tg-tasks-page" class="page"><h3>🤖 Telegram Bonus Tasks</h3><div id="dynamic-tasks-container"></div></div>
+    <div id="web-tasks-page" class="page"><h3>🌐 Web Tasks</h3><div id="web-tasks-container"></div></div>
+    <div id="support-page" class="page"><h3>📞 Support Center</h3><div id="support-links-container" class="support-link-grid"></div></div>
+    <div id="profile-page" class="page">
+      <div class="profile-header-premium card">
+        <img id="profile-photo-large" class="profile-avatar-large">
+        <h2 id="profile-name-large"></h2>
+        <div class="profile-details"><p><i class="fas fa-id-badge"></i> ID: <span id="profile-id"></span></p><p><i class="fas fa-at"></i> Username: @<span id="profile-username"></span></p></div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><h4>Today's Ads</h4><p id="daily-ads-watched">0 / 0</p></div>
+        <div class="stat-card"><h4>Total Referrals</h4><p id="referral-count">0</p></div>
+        <div class="stat-card"><h4>Total Ads Watched</h4><p id="total-ads-watched">0</p></div>
+        <div class="stat-card"><h4>Total Earned</h4><p id="total-earned">0</p></div>
+      </div>
+      <div id="referral-section"></div>
+    </div>
+  </main>
+  <nav class="bottom-nav">
+    <button class="nav-btn" data-page="tg-tasks-page"><i class="fab fa-telegram"></i><span>TG Task</span></button>
+    <button class="nav-btn" data-page="web-tasks-page"><i class="fas fa-globe"></i><span>Web Task</span></button>
+    <button class="nav-btn active home-nav-btn" data-page="home-page"><div class="home-icon-wrapper"><i class="fas fa-home"></i></div><span>Home</span></button>
+    <button class="nav-btn" data-page="support-page"><i class="fas fa-headset"></i><span>Support</span></button>
+    <button class="nav-btn" data-page="profile-page"><i class="fas fa-user"></i><span>Profile</span></button>
+  </nav>
+</div>
+<div id="wallet-modal" class="modal-overlay"><div class="modal-container"><div class="modal-header" style="display:flex; justify-content:space-between;"><h3>💰 Wallet</h3><span class="close-modal">&times;</span></div><div id="wallet-modal-body"></div></div></div>
+<div id="withdraw-flow-modal" class="modal-overlay"><div class="modal-container" id="withdraw-flow-container"></div></div>
+<div id="global-popup" class="modal-overlay"><div class="modal-container" id="global-popup-body"></div></div>
+<div id="webTaskPopupModal" class="modal-overlay"><div class="modal-container" id="webTaskPopupBody"></div></div>
+<script>
+(function(){
+  let tg = window.Telegram?.WebApp, db, appConfig = {}, userState = {}, tgUser = {};
+  let adRunning = false; // prevent concurrent clicks
+  
+  function formatTime(sec){ let m=Math.floor(sec/60), s=sec%60; return `${m}:${s<10?'0':''}${s}`; }
+  function showModal(id){ let el=document.getElementById(id); if(el) el.style.display='flex'; }
+  function hideModal(id){ let el=document.getElementById(id); if(el) el.style.display='none'; }
+  function showAlert(msg, cb){ let body=document.getElementById('global-popup-body'); if(body){ body.innerHTML=`<div style="text-align:center; padding:20px;"><h3>Notification</h3><p>${msg}</p><button class="action-btn close-modal">OK</button></div>`; showModal('global-popup'); document.querySelector('#global-popup .close-modal').onclick=()=>{ hideModal('global-popup'); if(cb) cb(); }; } else { alert(msg); if(cb) cb(); } }
+  async function addHistory(type, name, reward, status, message=""){
+    await db.ref(`users/${tgUser.id}/history`).push({ type, name, reward, status, message, timestamp: firebase.database.ServerValue.TIMESTAMP });
+  }
+  async function sendAdminNotification(msg){
+    let botToken = appConfig.botToken, chatId = appConfig.adminChatId || '8705098472';
+    if(!botToken || !chatId) return;
+    try{ await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ chat_id:chatId, text:msg }) }); }catch(e){}
+  }
+  async function processReferralEarnings(userId, earnedAmount, source){
+    if(!earnedAmount || earnedAmount<=0) return;
+    let userSnap = await db.ref(`users/${userId}`).once('value');
+    let user = userSnap.val();
+    if(!user || !user.referredBy) return;
+    let referrerId = user.referredBy;
+    let percent = parseFloat(appConfig.referralPercent) || 0;
+    if(percent<=0) return;
+    let commission = (earnedAmount * percent) / 100;
+    if(commission<=0) return;
+    await db.ref(`users/${referrerId}/earningWallet`).transaction(v=>(v||0)+commission);
+    await addHistory('Referral Commission', `Commission from ${user.firstName} (${source})`, commission, 'Completed');
+    await sendAdminNotification(`💰 Referral Commission\n👤 Referrer: ${user.firstName} (${userId})\n🎁 Earned: ${earnedAmount} Coins (${source})\n📈 Percent: ${percent}% → Commission: ${commission} Coins\n👑 To: ${referrerId}\n🕒 ${new Date().toLocaleString()}`);
+    let referrerSnap = await db.ref(`users/${referrerId}`).once('value');
+    let referrer = referrerSnap.val();
+    if(referrer) await db.ref(`users/${referrerId}/totalEarned`).transaction(v=>(v||0)+commission);
+  }
+
+  // ========== AD FUNCTIONS (separate) ==========
+  async function loadMonetag(zoneId, retries=2) {
+    for(let i=0;i<retries;i++){
+      if(typeof window["show_"+zoneId] === "function") return true;
+      await new Promise(r=>setTimeout(r, 800));
+      let script = document.createElement("script");
+      script.src = "https://libtl.com/sdk.js";
+      script.async = true;
+      script.setAttribute("data-zone", zoneId);
+      document.body.appendChild(script);
+      await new Promise(r=>setTimeout(r, 1200));
+      if(typeof window["show_"+zoneId] === "function") return true;
+    }
+    return false;
+  }
+  async function runMonetagAd() {
+    let zoneId = appConfig.adZoneId || '10806089';
+    let ready = await loadMonetag(zoneId, 2);
+    if(!ready) throw new Error("Monetag not ready");
+    await window["show_"+zoneId]();
+    return true;
+  }
+  async function runGigapubAd() {
+    return new Promise((resolve, reject) => {
+      if(typeof window.gigapub !== 'undefined' && typeof window.gigapub.show === 'function') {
+        window.gigapub.show('main', () => resolve(true));
+        setTimeout(() => reject(new Error("Gigapub timeout")), 15000);
+      } else {
+        let script = document.createElement("script");
+        script.src = "https://cdn.gigapub.com/sdk.js";
+        script.onload = () => {
+          if(window.gigapub && window.gigapub.show) {
+            window.gigapub.show('main', () => resolve(true));
+            setTimeout(() => reject(new Error("Gigapub timeout")), 15000);
+          } else reject(new Error("Gigapub failed"));
+        };
+        script.onerror = () => reject(new Error("Gigapub script error"));
+        document.body.appendChild(script);
+      }
+    });
+  }
+  async function handleAdWatch(adType) {
+    if(adRunning) { showAlert("Please wait, ad is already loading."); return; }
+    if(userState.dailyAdCount >= (appConfig.dailyAdLimit||50)) { showAlert("Daily ad limit reached"); return; }
+    // Show confirmation popup with message
+    let popupMsg = appConfig.adsPopupMessage || "এড দেখার পরে ১৫ সেকেন্ড অপেক্ষা করুন, অন্যথায় পেমেন্ট পাবেন না।";
+    document.getElementById('global-popup-body').innerHTML = `<div style="text-align:center"><h3>⚠️ Attention</h3><p>${popupMsg}</p><button id="adConfirmBtn" class="action-btn">OK, Watch Ad</button></div>`;
+    showModal('global-popup');
+    document.getElementById('adConfirmBtn').onclick = async () => {
+      hideModal('global-popup');
+      adRunning = true;
+      showModal('global-popup');
+      document.getElementById('global-popup-body').innerHTML = `<div style="text-align:center"><div class="spinner"></div><p>Loading advertisement...</p></div>`;
+      let success = false;
+      try {
+        if(adType === 'monetag') {
+          await runMonetagAd();
+          success = true;
+        } else if(adType === 'gigapub') {
+          await runGigapubAd();
+          success = true;
+        }
+      } catch(e) { console.warn(`${adType} ad failed`, e); }
+      hideModal('global-popup');
+      if(success) {
+        let adValue = parseFloat(appConfig.adValue) || 10;
+        userState.earningWallet = (userState.earningWallet||0) + adValue;
+        userState.dailyAdCount++;
+        userState.lifetimeAdCount = (userState.lifetimeAdCount||0)+1;
+        userState.totalEarned = (userState.totalEarned||0)+adValue;
+        await db.ref(`users/${tgUser.id}`).update({ dailyAdCount:userState.dailyAdCount, lifetimeAdCount:userState.lifetimeAdCount, totalEarned:userState.totalEarned, earningWallet:userState.earningWallet });
+        let today = new Date().toISOString().slice(0,10);
+        await db.ref(`userEarnings/${tgUser.id}/${today}`).transaction(v=>(v||0)+adValue);
+        await addHistory('Watch Ad', `Watched ${adType} Ad`, adValue, 'Completed');
+        await processReferralEarnings(tgUser.id, adValue, 'Video Ad');
+        await sendAdminNotification(`📺 Ad Watched (${adType})\nUser: ${userState.firstName} (${tgUser.id})\nReward: ${adValue} Coins`);
+        showAlert(`+${adValue} Coins earned!`);
+        renderAll();
+      } else {
+        showAlert("Ad failed to load. Please try again.");
+      }
+      adRunning = false;
+    };
+  }
+
+  // ========== END AD SYSTEM ==========
+
+  function renderAll(){
+    document.getElementById('user-photo').src = userState.photoUrl || 'https://via.placeholder.com/44';
+    document.getElementById('user-name').innerHTML = `${userState.firstName||''} ${userState.lastName||''}`;
+    document.getElementById('main-balance').innerText = (userState.balance||0).toFixed(0);
+    document.getElementById('daily-ads-watched').innerHTML = `${userState.dailyAdCount||0} / ${appConfig.dailyAdLimit||50}`;
+    document.getElementById('referral-count').innerText = userState.referrals||0;
+    document.getElementById('total-ads-watched').innerText = userState.lifetimeAdCount||0;
+    document.getElementById('total-earned').innerText = (userState.totalEarned||0).toFixed(0)+" Coins";
+    document.getElementById('earning-wallet-balance').innerText = (userState.earningWallet||0).toFixed(0);
+    document.getElementById('profile-photo-large').src = userState.photoUrl || 'https://via.placeholder.com/100';
+    document.getElementById('profile-name-large').innerHTML = `${userState.firstName||''} ${userState.lastName||''}`;
+    document.getElementById('profile-id').innerText = tgUser.id||'0';
+    document.getElementById('profile-username').innerText = userState.username||'N/A';
+    let moveBtn = document.getElementById('move-to-balance-btn');
+    if(moveBtn) moveBtn.disabled = (userState.earningWallet||0) < 100;
+    renderDailyCheckIn(); renderAdProgress(); renderTgTasks(); renderWebTasks(); renderReferralSection(); renderSupportLinks();
+  }
+  async function renderDailyCheckIn(){
+    let container = document.getElementById('daily-checkin-container');
+    if(!container) return;
+    let today = new Date().toISOString().slice(0,10);
+    if(userState.lastCheckInDate === today){ container.innerHTML=''; return; }
+    let streak = (userState.checkInStreak||0)+1;
+    container.innerHTML = `<div class="daily-checkin-card"><div><h3>Day ${streak} Check-in</h3><p>${today}</p></div><button id="start-checkin-btn" class="action-btn">Claim Daily Reward</button></div>`;
+    document.getElementById('start-checkin-btn')?.addEventListener('click', async ()=>{
+      let reward = 50;
+      userState.lastCheckInDate = today;
+      userState.checkInStreak = streak;
+      userState.earningWallet = (userState.earningWallet||0)+reward;
+      userState.totalEarned = (userState.totalEarned||0)+reward;
+      await db.ref(`users/${tgUser.id}`).update({ lastCheckInDate:today, checkInStreak:streak, earningWallet:userState.earningWallet, totalEarned:userState.totalEarned });
+      await addHistory('Daily Check-in', `Day ${streak} Reward`, reward, 'Completed');
+      await processReferralEarnings(tgUser.id, reward, 'Daily Check-in');
+      await sendAdminNotification(`🎁 Daily Check-in\nUser: ${userState.firstName} (${tgUser.id})\nReward: ${reward} Coins`);
+      showAlert(`+${reward} Coins added!`);
+      renderAll();
+    });
+  }
+  function renderAdProgress(){
+    let dailyLimit = appConfig.dailyAdLimit||50, watched = userState.dailyAdCount||0, percent = (watched/dailyLimit)*100;
+    document.getElementById('ad-progress-container').innerHTML = `<div class="progress-container"><div class="progress-info"><span>Daily Ad Progress</span><span>${watched}/${dailyLimit}</span></div><div class="progress-bar-bg"><div class="progress-bar-fg" style="width:${percent}%"></div></div></div>`;
+  }
+  async function renderTgTasks(){
+    let tasks = appConfig.tasks ? Object.entries(appConfig.tasks).map(([k,v])=>({key:k,...v})) : [];
+    let container = document.getElementById('dynamic-tasks-container');
+    if(!container) return;
+    let html = '';
+    for(let task of tasks){
+      let completed = userState.completedTasks?.[task.key];
+      let timer = userState.tgTaskTimers?.[task.key];
+      let btn = '';
+      if(completed) btn = `<button class="action-btn" disabled>Claimed</button>`;
+      else if(timer && timer.checkStartTime){
+        let elapsed = Date.now() - timer.checkStartTime;
+        if(elapsed >= 30*60*1000) btn = `<button class="action-btn tg-claim-btn" data-id="${task.key}">Claim Reward</button>`;
+        else { let rem = Math.ceil((30*60*1000 - elapsed)/1000); btn = `<button class="action-btn" disabled>Verifying (${formatTime(rem)})</button>`; }
+      } else if(timer && timer.startTime){
+        btn = `<button class="action-btn tg-check-btn" data-id="${task.key}">Check</button>`;
+      } else {
+        btn = `<button class="action-btn tg-start-btn" data-id="${task.key}" data-url="${task.url}">Join</button>`;
+      }
+      html += `<div class="task-container"><img class="task-icon-img" src="${task.icon}"><div class="task-info"><h3>${task.name}</h3><p>+${task.reward} Coins</p></div>${btn}</div>`;
+    }
+    container.innerHTML = html;
+    document.querySelectorAll('.tg-start-btn').forEach(btn=>btn.addEventListener('click', async (e)=>{ let id=btn.dataset.id, url=btn.dataset.url; tg.openLink(url); let startTime=Date.now(); await db.ref(`users/${tgUser.id}/tgTaskTimers/${id}/startTime`).set(startTime); if(!userState.tgTaskTimers) userState.tgTaskTimers={}; userState.tgTaskTimers[id]={startTime}; renderAll(); }));
+    document.querySelectorAll('.tg-check-btn').forEach(btn=>btn.addEventListener('click', async (e)=>{ let id=btn.dataset.id; let checkStartTime=Date.now(); await db.ref(`users/${tgUser.id}/tgTaskTimers/${id}/checkStartTime`).set(checkStartTime); if(userState.tgTaskTimers[id]) userState.tgTaskTimers[id].checkStartTime=checkStartTime; renderAll(); }));
+    document.querySelectorAll('.tg-claim-btn').forEach(btn=>btn.addEventListener('click', async (e)=>{ let id=btn.dataset.id, task=appConfig.tasks[id]; if(!task) return; await db.ref(`users/${tgUser.id}/completedTasks/${id}`).set(true); await db.ref(`users/${tgUser.id}/earningWallet`).transaction(v=>(v||0)+task.reward); userState.earningWallet=(userState.earningWallet||0)+task.reward; userState.totalEarned=(userState.totalEarned||0)+task.reward; if(!userState.completedTasks) userState.completedTasks={}; userState.completedTasks[id]=true; await addHistory('TG Task', task.name, task.reward, 'Completed'); await processReferralEarnings(tgUser.id, task.reward, 'TG Task'); await sendAdminNotification(`✅ TG Task Completed\nUser: ${userState.firstName} (${tgUser.id})\nTask: ${task.name}\nReward: ${task.reward} Coins`); showAlert(`+${task.reward} Coins added!`); renderAll(); }));
+  }
+  async function renderWebTasks(){
+    let tasksSnap = await db.ref('config/webTasks').once('value');
+    let tasks = []; tasksSnap.forEach(c=>tasks.push({key:c.key, ...c.val()}));
+    let userCompleted = (await db.ref(`users/${tgUser.id}/completedWebTasks`).once('value')).val()||{};
+    let container = document.getElementById('web-tasks-container');
+    if(!container) return;
+    let html = '';
+    for(let task of tasks){
+      let done = userCompleted[task.key];
+      let timer = userState.webTaskTimers?.[task.key];
+      let btn = '';
+      if(done) btn = `<button class="action-btn" disabled>Claimed</button>`;
+      else if(timer && timer.startTime) btn = `<button class="action-btn web-check-btn" data-key="${task.key}">Check</button>`;
+      else btn = `<button class="action-btn web-start-btn" data-key="${task.key}" data-url="${task.url}">Start</button>`;
+      html += `<div class="task-container"><img class="task-icon-img" src="${task.icon}"><div class="task-info"><h3>${task.name}</h3><p>Reward: ${task.reward} Coins</p></div>${btn}</div>`;
+    }
+    container.innerHTML = html;
+    document.querySelectorAll('.web-start-btn').forEach(btn=>btn.addEventListener('click', async (e)=>{
+      let key=btn.dataset.key, url=btn.dataset.url;
+      let popupMsg = appConfig.webTaskPopupMessage || "Read instructions carefully and stay on the page for 30 seconds.";
+      document.getElementById('webTaskPopupBody').innerHTML = `<div><h3>Web Task</h3><p>${popupMsg}</p><button id="webTaskPopupConfirm" class="action-btn">ঠিক আছে</button></div>`;
+      showModal('webTaskPopupModal');
+      document.getElementById('webTaskPopupConfirm').onclick = ()=>{
+        hideModal('webTaskPopupModal');
+        tg.openLink(url);
+        (async ()=>{
+          let startTime = Date.now();
+          await db.ref(`users/${tgUser.id}/webTaskTimers/${key}/startTime`).set(startTime);
+          if(!userState.webTaskTimers) userState.webTaskTimers={};
+          userState.webTaskTimers[key]={startTime};
+          renderAll();
+        })();
+      };
+    }));
+    document.querySelectorAll('.web-check-btn').forEach(btn=>btn.addEventListener('click', async (e)=>{
+      let key=btn.dataset.key, timer=userState.webTaskTimers[key], task=tasks.find(t=>t.key===key);
+      if(!timer||!task) return;
+      let timeSpent=Date.now()-timer.startTime;
+      if(timeSpent>=30000){
+        await db.ref(`users/${tgUser.id}/completedWebTasks/${key}`).set(true);
+        await db.ref(`users/${tgUser.id}/earningWallet`).transaction(v=>(v||0)+task.reward);
+        userState.earningWallet=(userState.earningWallet||0)+task.reward;
+        userState.totalEarned=(userState.totalEarned||0)+task.reward;
+        await addHistory('Web Task', task.name, task.reward, 'Completed');
+        await processReferralEarnings(tgUser.id, task.reward, 'Web Task');
+        await sendAdminNotification(`✅ Web Task Completed\nUser: ${userState.firstName} (${tgUser.id})\nTask: ${task.name}\nReward: ${task.reward} Coins`);
+        showAlert(`+${task.reward} Coins added!`);
+        await db.ref(`users/${tgUser.id}/webTaskTimers/${key}`).remove();
+        delete userState.webTaskTimers[key];
+      } else {
+        await addHistory('Web Task', task.name, 0, 'Rejected', "Did not stay 30 seconds");
+        showAlert("আপনি ৩০ সেকেন্ড ওয়েট করেননি, তাই কোন পয়েন্ট পাবেন না।");
+        await db.ref(`users/${tgUser.id}/webTaskTimers/${key}`).remove();
+        delete userState.webTaskTimers[key];
+      }
+      renderAll();
+    }));
+  }
+  async function renderSupportLinks(){
+    let linksSnap = await db.ref('config/links').once('value');
+    let links = []; linksSnap.forEach(c=>links.push(c.val()));
+    let container = document.getElementById('support-links-container');
+    if(!container) return;
+    if(links.length===0){ container.innerHTML='<p>No support links available.</p>'; return; }
+    let html = '';
+    links.forEach(link=>{ html+=`<a href="${link.url}" target="_blank" class="support-card"><img src="${link.icon}" onerror="this.src='https://via.placeholder.com/50'"><span>${link.name}</span></a>`; });
+    container.innerHTML = html;
+  }
+  function renderReferralSection(){
+    let link = `https://t.me/${appConfig.botUsername}/app?startapp=${tgUser.id}`;
+    let container = document.getElementById('referral-section');
+    if(container){
+      container.innerHTML = `<div class="referral-card-premium"><h3>Refer & Earn</h3><p>Invite friends, earn <strong>${appConfig.referralBonus||0} Coins instantly</strong> + <strong>${appConfig.referralPercent||0}%</strong> of their earnings!</p><div class="referral-link-box"><input id="ref-link" value="${link}" readonly><button id="copy-ref" class="copy-btn-premium">Copy</button></div><div class="referral-stats-mini"><span><i class="fas fa-users"></i> ${userState.referrals||0} Referrals</span><span><i class="fas fa-percent"></i> ${appConfig.referralPercent||0}% Commission</span></div></div>`;
+      document.getElementById('copy-ref')?.addEventListener('click',()=>{ navigator.clipboard.writeText(link); showAlert("Link copied!"); });
+    }
+  }
+  async function moveToBalance(){
+    if((userState.earningWallet||0)<100) return;
+    let amount=userState.earningWallet;
+    await db.ref(`users/${tgUser.id}/balance`).transaction(v=>(v||0)+amount);
+    await db.ref(`users/${tgUser.id}/earningWallet`).set(0);
+    userState.balance=(userState.balance||0)+amount;
+    userState.earningWallet=0;
+    renderAll();
+    showAlert("Moved to main balance!");
+  }
+  async function showWithdrawHistory(){
+    let snap=await db.ref(`withdrawals/completed`).orderByChild('userId').equalTo(tgUser.id).once('value');
+    let rejectedSnap=await db.ref(`withdrawals/rejected`).orderByChild('userId').equalTo(tgUser.id).once('value');
+    let items=[];
+    snap.forEach(r=>items.push({...r.val(), status:'Completed'}));
+    rejectedSnap.forEach(r=>items.push({...r.val(), status:'Rejected'}));
+    items.sort((a,b)=>b.timestamp-a.timestamp);
+    let html=`<div class="modal-header"><h3>Withdraw History</h3><span class="close-modal">&times;</span></div><div style="max-height:70vh; overflow-y:auto;">`;
+    if(!items.length) html+="<p>No withdrawal history</p>";
+    items.forEach(req=>{ let date=new Date(req.timestamp).toLocaleString(), color=req.status==='Completed'?'#27ae60':'#e74c3c'; html+=`<div class="history-item"><div><strong>${req.method}</strong><br><small>${date}</small></div><div><span style="color:${color}">${req.amount} Coins</span><br><small>${req.status}</small></div>${req.account?`<p>Account: ${req.account}</p>`:''}</div>`; });
+    html+=`</div>`;
+    document.getElementById('global-popup-body').innerHTML=html;
+    showModal('global-popup');
+    document.querySelector('#global-popup .close-modal')?.addEventListener('click',()=>hideModal('global-popup'));
+  }
+  async function startWithdraw(type){
+    let minRef = appConfig.withdrawReferralLimit || 0;
+    if((userState.referrals||0) < minRef){ showAlert(`Withdrawal requires at least ${minRef} referrals. You have ${userState.referrals||0}.`); return; }
+    let methods = type==='bdt'?(appConfig.withdrawBDTMethods||[]):(appConfig.withdrawUSDTMethods||[]);
+    if(!methods.length){ showAlert("No methods"); return; }
+    let grid = `<div class="methods-grid-3">`+methods.map((m,i)=>`<div class="method-card-item" data-idx="${i}"><img src="${m.photo}" style="width:70px; height:70px;"></div>`).join('')+`</div>`;
+    document.getElementById('withdraw-flow-container').innerHTML = `<div class="modal-header" style="display:flex; justify-content:space-between;"><h3>Select ${type.toUpperCase()} Method</h3><span class="close-modal">&times;</span></div>${grid}`;
+    showModal('withdraw-flow-modal');
+    document.querySelectorAll('.method-card-item[data-idx]').forEach(el=>{ el.addEventListener('click',async()=>{
+      let idx=parseInt(el.dataset.idx), method=methods[idx], rate=type==='bdt'?(appConfig.coinToBDT||0):(appConfig.coinToUSDT||0);
+      let formHtml = `<div><label>Account</label><input id="acc" placeholder="Enter ${type==='bdt'?'Number':'Address'}"><label>Coins</label><input type="number" id="coins"><p>You get: <span id="fiatVal">0</span> ${type.toUpperCase()}</p><button id="confirmW" class="action-btn">Submit</button></div>`;
+      document.getElementById('withdraw-flow-container').innerHTML = formHtml;
+      let coinsInp=document.getElementById('coins');
+      coinsInp.addEventListener('input',()=>{ let c=parseFloat(coinsInp.value)||0; document.getElementById('fiatVal').innerText=(c*rate).toFixed(2); });
+      document.getElementById('confirmW').addEventListener('click',async()=>{
+        let account=document.getElementById('acc').value.trim(), coinAmount=parseFloat(coinsInp.value);
+        if(!account||isNaN(coinAmount)||coinAmount<method.min){ showAlert(`Min ${method.min} coins`); return; }
+        if(coinAmount>userState.balance){ showAlert("Insufficient balance"); return; }
+        await db.ref(`users/${tgUser.id}/balance`).set(userState.balance-coinAmount);
+        userState.balance-=coinAmount;
+        let reqId=db.ref('withdrawals/pending').push().key;
+        await db.ref(`withdrawals/pending/${reqId}`).set({ id:reqId, userId:tgUser.id, userName:`${userState.firstName} ${userState.lastName}`, method:method.name, account, amount:coinAmount, status:'pending', timestamp:firebase.database.ServerValue.TIMESTAMP, type });
+        await sendAdminNotification(`💰 Withdrawal Request\nUser: ${userState.firstName} (${tgUser.id})\nAmount: ${coinAmount} Coins\nMethod: ${method.name}\nAccount: ${account}`);
+        showAlert("Withdraw request submitted!");
+        hideModal('withdraw-flow-modal'); hideModal('wallet-modal');
+        renderAll();
+      });
+    });});
+  }
+  async function loadUserData(){
+    let ref=db.ref(`users/${tgUser.id}`), snap=await ref.once('value'), data=snap.val();
+    if(!data){
+      let startParam=tg.initDataUnsafe?.start_param, referralId=(startParam&&!isNaN(startParam))?startParam:null;
+      data={ id:tgUser.id, firstName:tgUser.first_name||'', lastName:tgUser.last_name||'', username:tgUser.username||'', photoUrl:tgUser.photo_url||'', balance:0, earningWallet:0, referrals:0, referredBy:null, totalEarned:0, lifetimeAdCount:0, lastAdWatchDate:new Date().toISOString().slice(0,10), dailyAdCount:0, completedTasks:{}, lastCheckInDate:"", checkInStreak:0 };
+      if(referralId && referralId != tgUser.id && !data.referredBy) data.referredBy = referralId;
+      await ref.set(data);
+      if(referralId && referralId != tgUser.id && appConfig.referralBonus){
+        let bonus=parseFloat(appConfig.referralBonus);
+        if(bonus>0){ await db.ref(`users/${referralId}/earningWallet`).transaction(b=>(b||0)+bonus); await db.ref(`users/${referralId}/referrals`).transaction(r=>(r||0)+1); await addHistory('Referral Bonus', `Joined via ${referralId}`, bonus, 'Completed'); await sendAdminNotification(`👥 New Referral\nUser: ${tgUser.first_name} (${tgUser.id}) joined via ${referralId}\nBonus: ${bonus} Coins`); }
+        else await db.ref(`users/${referralId}/referrals`).transaction(r=>(r||0)+1);
+      }
+    }
+    let today=new Date().toISOString().slice(0,10);
+    if(data.lastAdWatchDate!==today){ data.dailyAdCount=0; await ref.update({dailyAdCount:0, lastAdWatchDate:today}); }
+    userState=data;
+  }
+  async function initApp(){
+    tg.ready(); tg.expand();
+    document.body.className=(tg.colorScheme||'light')+'-theme';
+    tgUser=tg.initDataUnsafe?.user||null;
+    if(!tgUser){ document.getElementById('loader-screen').innerHTML='<p>Error: Telegram user not found. Please open via Telegram.</p>'; return; }
+    let configSnap=await db.ref('config').once('value');
+    appConfig=configSnap.val()||{};
+    appConfig.adminChatId='8705098472';
+    if(!appConfig.adZoneId) appConfig.adZoneId='10806089';
+    if(!appConfig.adValue) appConfig.adValue=10;
+    if(!appConfig.dailyAdLimit) appConfig.dailyAdLimit=50;
+    if(!appConfig.referralBonus) appConfig.referralBonus=100;
+    if(!appConfig.referralPercent) appConfig.referralPercent=0;
+    if(!appConfig.withdrawReferralLimit) appConfig.withdrawReferralLimit=0;
+    if(!appConfig.walletUI) appConfig.walletUI={};
+    await enforceDeviceLock(tgUser.id);
+    await loadUserData();
+    renderAll();
+    setTimeout(()=>{ document.getElementById('loader-screen').style.display='none'; document.getElementById('app').style.display='block'; }, 500);
+    let popupData=await db.ref('config/popupMessage').once('value');
+    if(popupData.val() && (popupData.val().title||popupData.val().description)){
+      let p=popupData.val(), linksHtml=p.links?.map(l=>`<a href="${l.url}" target="_blank" class="popup-link" style="display:inline-block; margin:5px;"><img src="${l.image}" width="40" style="border-radius:8px;"> ${l.name}</a>`).join('')||'';
+      document.getElementById('global-popup-body').innerHTML=`<div><h2>${p.title}</h2><p>${p.description}</p>${linksHtml}<button class="action-btn close-modal">Close</button></div>`;
+      showModal('global-popup');
+      document.querySelector('#global-popup .close-modal')?.addEventListener('click',()=>hideModal('global-popup'));
+    }
+  }
+  const firebaseConfig={ apiKey:"AIzaSyB03K2JAA4iyBLgAX6Nv9Z0VMGX3qMGqBc", authDomain:"earnify-f3ac8.firebaseapp.com", databaseURL:"https://earnify-f3ac8-default-rtdb.firebaseio.com", projectId:"earnify-f3ac8", storageBucket:"earnify-f3ac8.firebasestorage.app", messagingSenderId:"273672601348", appId:"1:273672601348:web:4d627b5689575857345a51" };
+  if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+  db=firebase.database();
+  async function enforceDeviceLock(uid){
+    let stored = localStorage.getItem('device_id');
+    if(!stored){ stored = 'dev_'+Date.now()+'_'+Math.random().toString(36); localStorage.setItem('device_id', stored); }
+    let deviceId = stored.replace(/[^a-zA-Z0-9_-]/g,'_');
+    let snap = await db.ref(`deviceLock/${deviceId}`).once('value');
+    if(snap.val() && snap.val() !== uid){ showAlert("This device is already linked to another account.", ()=>tg.close()); throw new Error("Device locked"); }
+    if(!snap.val()) await db.ref(`deviceLock/${deviceId}`).set(uid);
+  }
+  document.querySelectorAll('.nav-btn').forEach(btn=>{ btn.addEventListener('click',()=>{ let pageId=btn.dataset.page; if(!pageId) return; document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById(pageId)?.classList.add('active'); document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }); });
+  document.getElementById('move-to-balance-btn')?.addEventListener('click',moveToBalance);
+  document.getElementById('wallet-icon')?.addEventListener('click',()=>{
+    let bdtImg = appConfig.walletUI?.bdtPhoto || 'https://img.icons8.com/color/96/bangladesh.png';
+    let usdtImg = appConfig.walletUI?.usdtPhoto || 'https://img.icons8.com/color/96/us-dollar.png';
+    let historyImg = appConfig.walletUI?.historyPhoto || 'https://img.icons8.com/color/96/history.png';
+    document.getElementById('wallet-modal-body').innerHTML = `<div class="methods-grid-3"><div id="withdraw-bdt-card" class="method-card-item"><img src="${bdtImg}" style="width:60px;"></div><div id="withdraw-usdt-card" class="method-card-item"><img src="${usdtImg}" style="width:60px;"></div><div id="history-card" class="method-card-item"><img src="${historyImg}" style="width:60px;"></div></div>`;
+    showModal('wallet-modal');
+    document.getElementById('withdraw-bdt-card')?.addEventListener('click',()=>{ hideModal('wallet-modal'); startWithdraw('bdt'); });
+    document.getElementById('withdraw-usdt-card')?.addEventListener('click',()=>{ hideModal('wallet-modal'); startWithdraw('usdt'); });
+    document.getElementById('history-card')?.addEventListener('click',()=>{ hideModal('wallet-modal'); showWithdrawHistory(); });
+  });
+  // Attach ad button listeners
+  document.getElementById('watch-monetag-btn')?.addEventListener('click', () => handleAdWatch('monetag'));
+  document.getElementById('watch-gigapub-btn')?.addEventListener('click', () => handleAdWatch('gigapub'));
+  window.addEventListener('click',e=>{ if(e.target.classList?.contains('modal-overlay')) e.target.style.display='none'; });
+  document.querySelectorAll('.close-modal').forEach(btn=>btn.addEventListener('click',function(){ this.closest('.modal-overlay').style.display='none'; }));
+  initApp();
+})();
+</script>
+</body>
+</html>

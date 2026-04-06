@@ -252,7 +252,7 @@
     if(referrer) await db.ref(`users/${referrerId}/totalEarned`).transaction(v=>(v||0)+commission);
   }
 
-  // ========== AD SYSTEM ==========
+  // ========== AD SYSTEM WITH BREAK ==========
   async function loadMonetag(zoneId, retries=2) {
     for(let i=0;i<retries;i++){
       if(typeof window["show_"+zoneId] === "function") return true;
@@ -353,15 +353,12 @@
     };
   }
 
-  // ========== REGISTRATION TASKS (unlimited) ==========
+  // ========== REGISTRATION TASKS ==========
   async function loadRegTasks() {
-    try {
-      let snap = await db.ref('config/regTasks').once('value');
-      let tasks = [];
-      snap.forEach(c => tasks.push({ key: c.key, ...c.val() }));
-      console.log("Loaded registration tasks:", tasks.length);
-      return tasks;
-    } catch(e) { console.error("Error loading reg tasks:", e); return []; }
+    let snap = await db.ref('config/regTasks').once('value');
+    let tasks = [];
+    snap.forEach(c => tasks.push({ key: c.key, ...c.val() }));
+    return tasks;
   }
   async function renderRegTasksPage() {
     let tasks = await loadRegTasks();
@@ -370,10 +367,7 @@
     let userRequests = userRequestsSnap.val() || {};
     let container = document.getElementById('reg-tasks-container');
     if(!container) return;
-    if(tasks.length === 0) {
-      container.innerHTML = '<p>No registration tasks available.</p>';
-      return;
-    }
+    if(tasks.length === 0) { container.innerHTML = '<p>No registration tasks available.</p>'; return; }
     let html = '';
     for(let task of tasks) {
       let completion = userCompletions[task.key];
@@ -484,7 +478,7 @@
     }
   }
 
-  // ========== TG TASKS ==========
+  // ========== TG TASKS (unlimited) ==========
   async function renderTgTasks(){
     let tasks = appConfig.tasks ? Object.entries(appConfig.tasks).map(([k,v])=>({key:k,...v})) : [];
     let container = document.getElementById('dynamic-tasks-container');
@@ -532,7 +526,6 @@
       let tasksSnap = await db.ref('config/webTasks').once('value');
       let tasks = [];
       tasksSnap.forEach(c => tasks.push({ key: c.key, ...c.val() }));
-      console.log("Loaded web tasks:", tasks.length);
       let userCompleted = (await db.ref(`users/${tgUser.id}/completedWebTasks`).once('value')).val()||{};
       let container = document.getElementById('web-tasks-container');
       if(!container) return;
@@ -603,7 +596,6 @@
       let linksSnap = await db.ref('config/links').once('value');
       let links = [];
       linksSnap.forEach(c => links.push(c.val()));
-      console.log("Loaded support links:", links.length);
       let html = `<div class="modal-header"><h3>📞 Support Center</h3><span class="close-modal">&times;</span></div><div class="support-link-grid">`;
       if(links.length === 0) html += '<p>No support links available.</p>';
       links.forEach(link => {

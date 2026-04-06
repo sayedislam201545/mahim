@@ -38,29 +38,51 @@
     .top-icons { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
     .top-icon-btn {
       background: rgba(255,255,255,0.2);
-      width: 40px; height: 40px;
+      width: 44px; height: 44px;
       display: flex; align-items: center; justify-content: center;
       border-radius: 30px;
       cursor: pointer;
       transition: transform 0.2s;
     }
-    .top-icon-btn i { font-size: 1.2rem; }
+    .top-icon-btn i { font-size: 1.3rem; }
     .top-icon-btn:active { transform: scale(0.95); }
     .page { display: none; padding: 16px; animation: fadeIn 0.3s ease; }
     .page.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
-    .card { background: var(--surface); border-radius: 20px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .card { background: var(--surface); border-radius: 24px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
     .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
-    .stat-card { padding: 15px; border-radius: 16px; text-align: center; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .stat-card { padding: 15px; border-radius: 20px; text-align: center; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); }
     .stat-card h4 { font-size: 0.75rem; text-transform: uppercase; opacity: 0.7; margin-bottom: 8px; }
     .stat-card p { font-size: 1.3rem; font-weight: 700; color: #E74C3C; }
-    .task-container { display: flex; align-items: center; gap: 15px; padding: 12px 15px; border-radius: 20px; margin-bottom: 12px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform 0.2s; }
+    .task-container {
+      display: flex; align-items: center; gap: 15px;
+      padding: 14px 16px;
+      border-radius: 24px;
+      margin-bottom: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
     .task-container:active { transform: scale(0.99); }
-    .task-icon-img { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; }
+    .task-icon-img { width: 52px; height: 52px; border-radius: 16px; object-fit: cover; }
     .task-info { flex: 1; }
-    .task-info h3 { font-size: 1rem; font-weight: 600; }
+    .task-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
     .task-info p { font-size: 0.75rem; opacity: 0.7; }
-    .action-btn { padding: 8px 20px; background: linear-gradient(45deg, #E74C3C, #F39C12); border: none; border-radius: 40px; color: white; font-weight: 600; cursor: pointer; transition: all 0.2s; font-size: 0.8rem; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .action-btn {
+      padding: 10px 22px;
+      background: linear-gradient(45deg, #E74C3C, #F39C12);
+      border: none;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      min-height: 44px;
+    }
     .action-btn:active { transform: scale(0.96); }
     .action-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
     .progress-container { margin: 15px 0; }
@@ -85,7 +107,7 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       font-family: inherit;
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       color: rgba(255,255,255,0.5);
       cursor: pointer;
       transition: all 0.3s;
@@ -93,12 +115,12 @@
       height: 100%;
       gap: 4px;
     }
-    .nav-btn i { font-size: 1.3rem; }
+    .nav-btn i { font-size: 1.4rem; }
     .nav-btn.active { color: #F39C12; }
     .home-nav-btn .home-icon-wrapper {
-      width: 50px; height: 50px;
+      width: 54px; height: 54px;
       background: linear-gradient(135deg, #E74C3C, #F39C12);
-      border-radius: 18px;
+      border-radius: 20px;
       display: flex;
       align-items: center; justify-content: center;
       color: white;
@@ -107,50 +129,55 @@
       transition: all 0.3s;
     }
     .home-nav-btn.active .home-icon-wrapper { transform: translateY(-8px) scale(1.05); }
-    .daily-checkin-card { background: linear-gradient(135deg, #2ECC7120, #27AE6020); border: 1px solid #27AE6040; border-radius: 20px; padding: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-    .profile-header-premium { text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #E74C3C10, #F39C1210); border: 1px solid var(--border); border-radius: 24px; margin-bottom: 20px; }
+    .daily-checkin-card { background: linear-gradient(135deg, #2ECC7120, #27AE6020); border: 1px solid #27AE6040; border-radius: 24px; padding: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .profile-header-premium { text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #E74C3C10, #F39C1210); border: 1px solid var(--border); border-radius: 32px; margin-bottom: 20px; }
     .profile-avatar-large { width: 100px; height: 100px; border-radius: 50%; border: 4px solid white; margin: 0 auto 15px; object-fit: cover; background: #fff; }
-    .referral-card-premium { background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-radius: 20px; padding: 12px 16px; color: white; text-align: center; margin-bottom: 20px; box-shadow: var(--shadow); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .referral-card-premium { background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-radius: 24px; padding: 14px 18px; color: white; text-align: center; margin-bottom: 20px; box-shadow: var(--shadow); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
     .referral-card-premium h3 { font-size: 0.9rem; margin: 0; }
-    .referral-link-box { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 16px; padding: 8px 12px; display: flex; gap: 8px; align-items: center; flex: 1; min-width: 150px; }
+    .referral-link-box { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 20px; padding: 8px 14px; display: flex; gap: 10px; align-items: center; flex: 1; min-width: 150px; }
     .referral-link-box input { background: none; border: none; color: white; font-size: 0.75rem; flex: 1; outline: none; font-family: monospace; }
-    .copy-btn-premium { background: white; color: #2575fc; border: none; border-radius: 12px; padding: 6px 12px; font-weight: 700; cursor: pointer; font-size: 0.7rem; }
-    .methods-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 15px 0; }
-    .method-card-item { text-align: center; background: var(--surface); padding: 12px; border-radius: 20px; cursor: pointer; border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform 0.2s; }
+    .copy-btn-premium { background: white; color: #2575fc; border: none; border-radius: 14px; padding: 8px 16px; font-weight: 700; cursor: pointer; font-size: 0.75rem; }
+    .methods-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+    .method-card-item { text-align: center; background: var(--surface); padding: 15px; border-radius: 24px; cursor: pointer; border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform 0.2s; }
     .method-card-item:active { transform: scale(0.96); }
-    .method-card-item img { width: 70px; height: 70px; object-fit: contain; border-radius: 12px; margin-bottom: 5px; }
-    .history-item { padding: 12px; border-radius: 16px; background: var(--surface); margin-bottom: 10px; border: 1px solid var(--border); box-shadow: var(--shadow); }
-    .earning-wallet-card { background: linear-gradient(135deg, #E74C3C20, #F39C1220); border-radius: 20px; padding: 12px 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(231,76,60,0.2); }
+    .method-card-item img { width: 70px; height: 70px; object-fit: contain; border-radius: 16px; margin-bottom: 5px; }
+    .history-item { padding: 14px; border-radius: 20px; background: var(--surface); margin-bottom: 12px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .earning-wallet-card { background: linear-gradient(135deg, #E74C3C20, #F39C1220); border-radius: 24px; padding: 14px 18px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(231,76,60,0.2); }
     .earning-wallet-card h3 { font-size: 0.9rem; margin-bottom: 4px; }
     .earning-wallet-card p { font-size: 1.4rem; font-weight: 700; color: #E74C3C; }
     .loader-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: #FDFEFE; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     body.dark-theme .loader-screen { background: #1B2631; }
     .spinner { width: 50px; height: 50px; border: 4px solid #E74C3C20; border-top: 4px solid #E74C3C; border-radius: 50%; animation: spin 1s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .support-link-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-    .support-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 12px; text-align: center; text-decoration: none; color: inherit; transition: 0.2s; box-shadow: var(--shadow); }
+    .support-link-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; }
+    .support-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 14px; text-align: center; text-decoration: none; color: inherit; transition: 0.2s; box-shadow: var(--shadow); }
     .support-card:active { transform: scale(0.98); }
-    .support-card img { width: 50px; height: 50px; border-radius: 12px; margin-bottom: 8px; }
+    .support-card img { width: 55px; height: 55px; border-radius: 16px; margin-bottom: 8px; }
     .support-card span { display: block; font-weight: 500; font-size: 0.8rem; }
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 2000; }
-    .modal-container { background: var(--surface); border-radius: 28px; width: 90%; max-width: 400px; max-height: 85vh; overflow-y: auto; padding: 20px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    .modal-container { background: var(--surface); border-radius: 32px; width: 90%; max-width: 400px; max-height: 85vh; overflow-y: auto; padding: 20px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
     .close-modal { float: right; font-size: 1.5rem; cursor: pointer; }
-    .ad-buttons-row { display: flex; gap: 12px; margin: 15px 0; }
-    .ad-card { background: var(--surface); border-radius: 16px; padding: 10px; text-align: center; flex: 1; border: 1px solid var(--border); box-shadow: var(--shadow); transition: 0.2s; }
-    .ad-card img { width: 40px; height: 40px; margin-bottom: 5px; }
-    .ad-card button { margin-top: 8px; padding: 6px 12px; font-size: 0.7rem; }
-    .countdown-timer { font-family: monospace; font-size: 0.8rem; font-weight: bold; color: #E74C3C; }
-    .reg-task-item { margin-bottom: 15px; }
-    .reg-task-header { display: flex; gap: 12px; align-items: center; }
-    .reg-task-img { width: 50px; height: 50px; border-radius: 12px; object-fit: cover; }
-    .reg-task-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
-    .desc-modal-img { max-width: 100%; margin: 10px 0; border-radius: 12px; }
-    .rejection-reason { background: #ffebee; padding: 10px; border-radius: 12px; margin-top: 10px; color: #c62828; }
-    .rejection-images { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
-    .rejection-images img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
-    .withdraw-form-group { margin-bottom: 15px; }
-    .withdraw-form-group label { display: block; margin-bottom: 5px; font-weight: 500; font-size: 0.85rem; }
-    .withdraw-form-group input { width: 100%; padding: 12px; border-radius: 16px; border: 1px solid var(--border); background: var(--surface); font-family: inherit; }
+    .ad-buttons-row { display: flex; gap: 15px; margin: 15px 0; }
+    .ad-card { background: var(--surface); border-radius: 24px; padding: 14px; text-align: center; flex: 1; border: 1px solid var(--border); box-shadow: var(--shadow); transition: 0.2s; }
+    .ad-card img { width: 48px; height: 48px; margin-bottom: 8px; }
+    .ad-card button { margin-top: 10px; padding: 8px 16px; font-size: 0.8rem; min-height: 44px; }
+    .countdown-timer { font-family: monospace; font-size: 0.85rem; font-weight: bold; color: #E74C3C; }
+    .reg-task-item { margin-bottom: 20px; }
+    .reg-task-header { display: flex; gap: 15px; align-items: center; }
+    .reg-task-img { width: 55px; height: 55px; border-radius: 16px; object-fit: cover; }
+    .reg-task-actions { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+    .desc-modal-img { max-width: 100%; margin: 10px 0; border-radius: 16px; }
+    .rejection-reason { background: #ffebee; padding: 12px; border-radius: 20px; margin-top: 12px; color: #c62828; }
+    .rejection-images { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .rejection-images img { width: 80px; height: 80px; object-fit: cover; border-radius: 12px; }
+    .withdraw-form-group { margin-bottom: 18px; }
+    .withdraw-form-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.85rem; }
+    .withdraw-form-group input { width: 100%; padding: 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); font-family: inherit; font-size: 1rem; }
+    @media (max-width: 480px) {
+      .task-container { flex-wrap: wrap; }
+      .reg-task-actions button { flex: 1; }
+      .ad-buttons-row { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
@@ -173,7 +200,7 @@
     <div id="home-page" class="page active">
       <div class="earning-wallet-card">
         <div><h3><i class="fas fa-coins"></i> Earning Wallet</h3><small>Min 100 to move</small></div>
-        <div><p><span id="earning-wallet-balance">0</span> Coins</p><button id="move-to-balance-btn" class="action-btn" style="padding:4px 12px;">Move</button></div>
+        <div><p><span id="earning-wallet-balance">0</span> Coins</p><button id="move-to-balance-btn" class="action-btn" style="padding:6px 14px;">Move</button></div>
       </div>
       <div id="daily-checkin-container"></div>
       <div id="ad-progress-container"></div>
@@ -252,46 +279,65 @@
     if(referrer) await db.ref(`users/${referrerId}/totalEarned`).transaction(v=>(v||0)+commission);
   }
 
-  // ========== AD SYSTEM WITH BREAK ==========
-  async function loadMonetag(zoneId, retries=2) {
-    for(let i=0;i<retries;i++){
-      if(typeof window["show_"+zoneId] === "function") return true;
-      await new Promise(r=>setTimeout(r, 800));
-      let script = document.createElement("script");
-      script.src = "https://libtl.com/sdk.js";
-      script.async = true;
-      script.setAttribute("data-zone", zoneId);
-      document.body.appendChild(script);
-      await new Promise(r=>setTimeout(r, 1200));
-      if(typeof window["show_"+zoneId] === "function") return true;
-    }
-    return false;
+  // ========== REFERRAL CAPTURE ==========
+  function captureReferral() {
+    // Check Telegram start_param
+    let startParam = tg.initDataUnsafe?.start_param;
+    if(startParam && !isNaN(startParam)) return startParam;
+    // Check URL query param 'ref'
+    const urlParams = new URLSearchParams(window.location.search);
+    const ref = urlParams.get('ref');
+    if(ref && !isNaN(ref)) return ref;
+    return null;
+  }
+
+  // ========== AD SYSTEM WITH PROPER SDK LOADING ==========
+  let monetagLoaded = false;
+  function initMonetag(zoneId) {
+    if(monetagLoaded) return;
+    let script = document.createElement("script");
+    script.src = "https://libtl.com/sdk.js";
+    script.async = true;
+    script.setAttribute("data-zone", zoneId);
+    script.setAttribute("data-sdk", `show_${zoneId}`);
+    document.body.appendChild(script);
+    monetagLoaded = true;
   }
   async function runMonetagAd() {
     let zoneId = appConfig.adZoneId || '10806089';
-    let ready = await loadMonetag(zoneId, 2);
-    if(!ready) throw new Error("Monetag not ready");
-    await window["show_"+zoneId]();
-    return true;
+    initMonetag(zoneId);
+    // Wait for function to be available
+    for(let i=0;i<10;i++) {
+      let fn = window[`show_${zoneId}`];
+      if(typeof fn === 'function') {
+        await fn();
+        return true;
+      }
+      await new Promise(r=>setTimeout(r, 500));
+    }
+    throw new Error("Monetag not ready");
   }
   async function runGigapubAd() {
-    return new Promise((resolve, reject) => {
-      if(typeof window.gigapub !== 'undefined' && typeof window.gigapub.show === 'function') {
-        window.gigapub.show('main', () => resolve(true));
-        setTimeout(() => reject(new Error("Gigapub timeout")), 15000);
-      } else {
+    // Load gigapub script if not already
+    if(!window.showGiga) {
+      await new Promise((resolve, reject) => {
         let script = document.createElement("script");
-        script.src = "https://cdn.gigapub.com/sdk.js";
-        script.onload = () => {
-          if(window.gigapub && window.gigapub.show) {
-            window.gigapub.show('main', () => resolve(true));
-            setTimeout(() => reject(new Error("Gigapub timeout")), 15000);
-          } else reject(new Error("Gigapub failed"));
-        };
-        script.onerror = () => reject(new Error("Gigapub script error"));
+        script.src = "https://ad.gigapub.tech/script?id=6234";
+        script.onload = () => resolve();
+        script.onerror = () => reject("Gigapub script failed");
         document.body.appendChild(script);
+      });
+      // Wait for showGiga function
+      for(let i=0;i<10;i++) {
+        if(window.showGiga) break;
+        await new Promise(r=>setTimeout(r, 500));
       }
-    });
+    }
+    if(window.showGiga) {
+      await window.showGiga();
+      return true;
+    }
+    throw new Error("Gigapub not ready");
   }
   async function handleAdWatch(adType) {
     if(adRunning) { showAlert("Please wait, ad is already loading."); return; }
@@ -353,7 +399,7 @@
     };
   }
 
-  // ========== REGISTRATION TASKS ==========
+  // ========== UNLIMITED TASKS RENDERING ==========
   async function loadRegTasks() {
     let snap = await db.ref('config/regTasks').once('value');
     let tasks = [];
@@ -478,7 +524,7 @@
     }
   }
 
-  // ========== TG TASKS (unlimited) ==========
+  // ========== TG TASKS ==========
   async function renderTgTasks(){
     let tasks = appConfig.tasks ? Object.entries(appConfig.tasks).map(([k,v])=>({key:k,...v})) : [];
     let container = document.getElementById('dynamic-tasks-container');
@@ -520,7 +566,7 @@
     document.querySelectorAll('.tg-claim-btn').forEach(btn=>btn.addEventListener('click', async (e)=>{ let id=btn.dataset.id, task=appConfig.tasks[id]; if(!task) return; await db.ref(`users/${tgUser.id}/completedTasks/${id}`).set(true); await db.ref(`users/${tgUser.id}/earningWallet`).transaction(v=>(v||0)+task.reward); userState.earningWallet=(userState.earningWallet||0)+task.reward; userState.totalEarned=(userState.totalEarned||0)+task.reward; if(!userState.completedTasks) userState.completedTasks={}; userState.completedTasks[id]=true; await addHistory('TG Task', task.name, task.reward, 'Completed'); await processReferralEarnings(tgUser.id, task.reward, 'TG Task'); await sendAdminNotification(`✅ TG Task Completed\nUser: ${userState.firstName} (${tgUser.id})\nTask: ${task.name}\nReward: ${task.reward} Coins`); showAlert(`+${task.reward} Coins added!`); renderAll(); }));
   }
 
-  // ========== WEB TASKS (unlimited) ==========
+  // ========== WEB TASKS ==========
   async function renderWebTasks(){
     try {
       let tasksSnap = await db.ref('config/webTasks').once('value');
@@ -590,7 +636,7 @@
     }));
   }
 
-  // ========== SUPPORT LINKS (unlimited) ==========
+  // ========== SUPPORT LINKS ==========
   async function renderSupportLinksModal() {
     try {
       let linksSnap = await db.ref('config/links').once('value');
@@ -720,7 +766,7 @@
   async function loadUserData(){
     let ref=db.ref(`users/${tgUser.id}`), snap=await ref.once('value'), data=snap.val();
     if(!data){
-      let startParam=tg.initDataUnsafe?.start_param, referralId=(startParam&&!isNaN(startParam))?startParam:null;
+      let referralId = captureReferral();
       data={ id:tgUser.id, firstName:tgUser.first_name||'', lastName:tgUser.last_name||'', username:tgUser.username||'', photoUrl:tgUser.photo_url||'', balance:0, earningWallet:0, referrals:0, referredBy:null, totalEarned:0, lifetimeAdCount:0, lastAdWatchDate:new Date().toISOString().slice(0,10), dailyAdCount:0, completedTasks:{}, lastCheckInDate:"", checkInStreak:0 };
       if(referralId && referralId != tgUser.id && !data.referredBy) data.referredBy = referralId;
       await ref.set(data);

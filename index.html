@@ -144,41 +144,42 @@
     .daily-checkin-card { background: linear-gradient(135deg, #2ECC7120, #27AE6020); border: 1px solid #27AE6040; border-radius: 24px; padding: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
     .profile-header-premium { text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #E74C3C10, #F39C1210); border: 1px solid var(--border); border-radius: 32px; margin-bottom: 20px; }
     .profile-avatar-large { width: 100px; height: 100px; border-radius: 50%; border: 4px solid white; margin: 0 auto 15px; object-fit: cover; background: #fff; }
-    .referral-card-premium {
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      border-radius: 24px;
-      padding: 14px 18px;
-      color: white;
-      text-align: center;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
+    
+    .referral-card-premium { 
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); 
+      border-radius: 24px; 
+      padding: 14px 18px; 
+      color: white; 
+      text-align: center; 
+      margin-bottom: 20px; 
+      box-shadow: var(--shadow); 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      flex-wrap: wrap; 
+      gap: 10px; 
     }
     .referral-card-premium h3 { font-size: 0.9rem; margin: 0; }
-    .referral-link-box {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 8px 14px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex: 1;
-      min-width: 150px;
+    .referral-link-box { 
+      background: rgba(255,255,255,0.15); 
+      backdrop-filter: blur(10px); 
+      border-radius: 20px; 
+      padding: 8px 14px; 
+      display: flex; 
+      gap: 10px; 
+      align-items: center; 
+      flex: 1; 
+      min-width: 150px; 
     }
     .referral-link-box input { background: none; border: none; color: white; font-size: 0.75rem; flex: 1; outline: none; font-family: monospace; }
     .copy-btn-premium { background: white; color: #2575fc; border: none; border-radius: 14px; padding: 8px 16px; font-weight: 700; cursor: pointer; font-size: 0.75rem; }
     .copy-btn-premium:active { transform: scale(0.95); }
-
+    
     .methods-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
     .method-card-item { text-align: center; background: var(--surface); padding: 15px; border-radius: 24px; cursor: pointer; border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform 0.2s; }
     .method-card-item:active { transform: scale(0.96); }
     .method-card-item img { width: 70px; height: 70px; object-fit: contain; border-radius: 16px; margin-bottom: 5px; }
-
+    
     .history-item-premium {
       background: var(--surface);
       border-radius: 24px;
@@ -214,11 +215,11 @@
     .history-status.completed { background: #10B98120; color: #10B981; }
     .history-status.pending { background: #F59E0B20; color: #F59E0B; }
     .history-status.rejected { background: #EF444420; color: #EF4444; }
-
+    
     .earning-wallet-card { background: linear-gradient(135deg, #E74C3C20, #F39C1220); border-radius: 24px; padding: 14px 18px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(231,76,60,0.2); }
     .earning-wallet-card h3 { font-size: 0.9rem; margin-bottom: 4px; }
     .earning-wallet-card p { font-size: 1.4rem; font-weight: 700; color: #E74C3C; }
-
+    
     .ad-buttons-row { display: flex; gap: 15px; margin: 15px 0; }
     .ad-card-premium {
       background: linear-gradient(145deg, var(--surface), var(--surface));
@@ -251,10 +252,10 @@
     .ad-card-premium img { width: 56px; height: 56px; margin-bottom: 8px; border-radius: 16px; }
     .ad-card-premium h4 { font-size: 0.9rem; margin-bottom: 4px; }
     .ad-card-premium p { font-size: 0.7rem; opacity: 0.7; margin-bottom: 10px; }
-    .ad-card-premium button {
-      margin-top: 8px;
-      padding: 10px 20px;
-      font-size: 0.85rem;
+    .ad-card-premium button { 
+      margin-top: 8px; 
+      padding: 10px 20px; 
+      font-size: 0.85rem; 
       min-height: 44px;
       background: linear-gradient(45deg, #E74C3C, #F39C12);
       border: none;
@@ -268,7 +269,7 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
-
+    
     .pending-withdraw-banner {
       background: linear-gradient(135deg, #FEF3C7, #FDE68A);
       border-radius: 24px;
@@ -282,7 +283,7 @@
       70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
       100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
     }
-
+    
     .loader-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: #FDFEFE; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     body.dark-theme .loader-screen { background: #1B2631; }
     .spinner { width: 50px; height: 50px; border: 4px solid #E74C3C20; border-top: 4px solid #E74C3C; border-radius: 50%; animation: spin 1s linear infinite; }
@@ -292,28 +293,28 @@
     .support-card:active { transform: scale(0.98); }
     .support-card img { width: 55px; height: 55px; border-radius: 16px; margin-bottom: 8px; }
     .support-card span { display: block; font-weight: 500; font-size: 0.8rem; }
-
+    
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 2000; }
     .modal-container { background: var(--surface); border-radius: 32px; width: 90%; max-width: 400px; max-height: 85vh; overflow-y: auto; padding: 20px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
     .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
     .close-modal { font-size: 1.5rem; cursor: pointer; }
     .countdown-timer { font-family: monospace; font-size: 0.85rem; font-weight: bold; color: #E74C3C; }
-
+    
     .reg-task-item { margin-bottom: 20px; padding: 16px; background: var(--surface); border-radius: 24px; border: 1px solid var(--border); }
     .reg-task-header { display: flex; gap: 15px; align-items: center; margin-bottom: 12px; }
     .reg-task-img { width: 55px; height: 55px; border-radius: 16px; object-fit: cover; }
     .reg-task-actions { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
     .reg-task-actions button { flex: 1; }
-
+    
     .desc-modal-img { max-width: 100%; margin: 10px 0; border-radius: 16px; }
     .rejection-reason { padding: 12px; border-radius: 16px; margin-top: 12px; font-size: 0.85rem; }
     .rejection-images { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
     .rejection-images img { width: 70px; height: 70px; object-fit: cover; border-radius: 12px; }
-
+    
     .withdraw-form-group { margin-bottom: 18px; }
     .withdraw-form-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.85rem; }
     .withdraw-form-group input { width: 100%; padding: 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); font-family: inherit; font-size: 1rem; }
-
+    
     .status-badge {
       display: inline-block;
       padding: 4px 12px;
@@ -325,7 +326,7 @@
     .status-badge.pending { background: #F59E0B20; color: #F59E0B; }
     .status-badge.confirmed { background: #3B82F620; color: #3B82F6; }
     .status-badge.rejected { background: #EF444420; color: #EF4444; }
-
+    
     @media (max-width: 480px) {
       .task-container { flex-wrap: wrap; }
       .reg-task-actions button { flex: 1; }
@@ -374,25 +375,25 @@
       </div>
       <div id="pending-withdraw-banner-container"></div>
     </div>
-
+    
     <!-- TG TASKS PAGE -->
     <div id="tg-tasks-page" class="page">
       <h3 style="margin-bottom:16px;"><i class="fab fa-telegram" style="color:#0088cc;"></i> Telegram Bonus Tasks</h3>
       <div id="dynamic-tasks-container"></div>
     </div>
-
+    
     <!-- WEB TASKS PAGE -->
     <div id="web-tasks-page" class="page">
       <h3 style="margin-bottom:16px;"><i class="fas fa-globe" style="color:#3B82F6;"></i> Web Tasks</h3>
       <div id="web-tasks-container"></div>
     </div>
-
+    
     <!-- REG TASKS PAGE -->
     <div id="reg-tasks-page" class="page">
       <h3 style="margin-bottom:16px;"><i class="fas fa-user-plus" style="color:#10B981;"></i> Registration Tasks</h3>
       <div id="reg-tasks-container"></div>
     </div>
-
+    
     <!-- PROFILE PAGE -->
     <div id="profile-page" class="page">
       <div class="profile-header-premium card">
@@ -409,7 +410,7 @@
       <div id="referral-section"></div>
     </div>
   </main>
-
+  
   <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-nav">
     <button class="nav-btn" data-page="tg-tasks-page"><i class="fab fa-telegram"></i><span>TG Task</span></button>
@@ -464,31 +465,59 @@
   let adLocks = { monetag: false, gigapub: false };
   
   // Helper functions
-  function formatTime(sec){ let m = Math.floor(sec/60), s = sec%60; return `${m}:${s<10?'0':''}${s}`; }
-  function formatSeconds(sec){ let h = Math.floor(sec/3600), m = Math.floor((sec%3600)/60), s = sec%60; return `${h}h ${m}m ${s}s`; }
-  function escapeHtml(s){ return String(s||'').replace(/[&<>]/g, m=> ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m]); }
-  function showModal(id){ let el = document.getElementById(id); if(el) el.style.display = 'flex'; }
-  function hideModal(id){ let el = document.getElementById(id); if(el) el.style.display = 'none'; }
-  function showAlert(msg, cb){
-    let body = document.getElementById('global-popup-body');
-    if(body){
-      body.innerHTML = `<div style="text-align:center; padding:20px;"><h3>Notification</h3><p>${msg}</p><button class="action-btn close-modal">OK</button></div>`;
-      showModal('global-popup');
-      document.querySelector('#global-popup .close-modal').onclick = () => { hideModal('global-popup'); if(cb) cb(); };
-    } else { alert(msg); if(cb) cb(); }
+  function formatTime(sec){ 
+    let m = Math.floor(sec/60), s = sec%60; 
+    return `${m}:${s<10?'0':''}${s}`; 
   }
-
+  
+  function formatSeconds(sec){ 
+    let h = Math.floor(sec/3600), m = Math.floor((sec%3600)/60), s = sec%60; 
+    return `${h}h ${m}m ${s}s`; 
+  }
+  
+  function escapeHtml(s){ 
+    return String(s||'').replace(/[&<>]/g, m=> ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m]); 
+  }
+  
+  function showModal(id){ 
+    let el = document.getElementById(id); 
+    if(el) el.style.display = 'flex'; 
+  }
+  
+  function hideModal(id){ 
+    let el = document.getElementById(id); 
+    if(el) el.style.display = 'none'; 
+  }
+  
+  function showAlert(msg, cb){ 
+    let body = document.getElementById('global-popup-body'); 
+    if(body){ 
+      body.innerHTML = `<div style="text-align:center; padding:20px;"><h3>Notification</h3><p>${msg}</p><button class="action-btn close-modal">OK</button></div>`; 
+      showModal('global-popup'); 
+      document.querySelector('#global-popup .close-modal').onclick = () => { hideModal('global-popup'); if(cb) cb(); }; 
+    } else { alert(msg); if(cb) cb(); } 
+  }
+  
   async function addHistory(type, name, reward, status, message = ""){
-    await db.ref(`users/${tgUser.id}/history`).push({ type, name, reward, status, message, timestamp: firebase.database.ServerValue.TIMESTAMP });
+    await db.ref(`users/${tgUser.id}/history`).push({ 
+      type, name, reward, status, message, 
+      timestamp: firebase.database.ServerValue.TIMESTAMP 
+    });
   }
-
+  
   async function sendAdminNotification(msg){
     let botToken = appConfig.botToken;
     let chatId = appConfig.adminChatId || '8705098472';
     if(!botToken || !chatId) return;
-    try { await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ chat_id:chatId, text:msg }) }); } catch(e) {}
+    try { 
+      await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, { 
+        method:'POST', 
+        headers:{'Content-Type':'application/json'}, 
+        body:JSON.stringify({ chat_id:chatId, text:msg }) 
+      }); 
+    } catch(e) {}
   }
-
+  
   async function processReferralEarnings(userId, earnedAmount, source){
     if(!earnedAmount || earnedAmount <= 0) return;
     let userSnap = await db.ref(`users/${userId}`).once('value');
@@ -519,6 +548,7 @@
 
   // ========== DUAL AD SYSTEM ==========
   let monetagLoaded = false;
+  
   function initMonetag(zoneId) {
     if(monetagLoaded) return;
     let script = document.createElement("script");
@@ -529,18 +559,21 @@
     document.body.appendChild(script);
     monetagLoaded = true;
   }
-
+  
   async function runMonetagAd() {
     let zoneId = appConfig.monetagZoneId || '10806089';
     initMonetag(zoneId);
     for(let i = 0; i < 15; i++) {
       let fn = window[`show_${zoneId}`];
-      if(typeof fn === 'function') { await fn(); return true; }
+      if(typeof fn === 'function') {
+        await fn();
+        return true;
+      }
       await new Promise(r => setTimeout(r, 500));
     }
     return false;
   }
-
+  
   async function runGigapubAd() {
     if(!window.showGiga) {
       await new Promise((resolve) => {
@@ -550,12 +583,18 @@
         script.onerror = () => resolve();
         document.body.appendChild(script);
       });
-      for(let i = 0; i < 15; i++) { if(window.showGiga) break; await new Promise(r => setTimeout(r, 500)); }
+      for(let i = 0; i < 15; i++) {
+        if(window.showGiga) break;
+        await new Promise(r => setTimeout(r, 500));
+      }
     }
-    if(window.showGiga) { await window.showGiga(); return true; }
+    if(window.showGiga) {
+      await window.showGiga();
+      return true;
+    }
     return false;
   }
-
+  
   function updateAdButtonStates() {
     const monetagBtn = document.getElementById('watch-monetag-btn');
     const gigapubBtn = document.getElementById('watch-gigapub-btn');
@@ -572,9 +611,12 @@
       } else {
         monetagBtn.innerHTML = 'Watch Ad';
         monetagBtn.disabled = false;
-        if(monetagAdCount >= breakAfterMonetag && Date.now() >= monetagBreakEnd) monetagAdCount = 0;
+        if(monetagAdCount >= breakAfterMonetag && Date.now() >= monetagBreakEnd) {
+          monetagAdCount = 0;
+        }
       }
     }
+    
     if(gigapubBtn) {
       if(gigapubAdCount >= breakAfterGigapub && Date.now() < gigapubBreakEnd) {
         const remaining = Math.ceil((gigapubBreakEnd - Date.now()) / 1000);
@@ -583,16 +625,26 @@
       } else {
         gigapubBtn.innerHTML = 'Watch Ad';
         gigapubBtn.disabled = false;
-        if(gigapubAdCount >= breakAfterGigapub && Date.now() >= gigapubBreakEnd) gigapubAdCount = 0;
+        if(gigapubAdCount >= breakAfterGigapub && Date.now() >= gigapubBreakEnd) {
+          gigapubAdCount = 0;
+        }
       }
     }
   }
-
+  
   async function handleAdWatch(adType) {
-    if(adLocks[adType]) { showAlert("⏳ Please wait, ad is processing..."); return; }
+    if(adLocks[adType]) {
+      showAlert("⏳ Please wait, ad is processing...");
+      return;
+    }
     
-    const breakAfter = adType === 'monetag' ? (parseInt(appConfig.monetagBreakAfter) || 5) : (parseInt(appConfig.gigapubBreakAfter) || 5);
-    const breakDuration = adType === 'monetag' ? (parseInt(appConfig.monetagBreakDuration) || 300) : (parseInt(appConfig.gigapubBreakDuration) || 300);
+    const breakAfter = adType === 'monetag' 
+      ? (parseInt(appConfig.monetagBreakAfter) || 5)
+      : (parseInt(appConfig.gigapubBreakAfter) || 5);
+    const breakDuration = adType === 'monetag'
+      ? (parseInt(appConfig.monetagBreakDuration) || 300)
+      : (parseInt(appConfig.gigapubBreakDuration) || 300);
+    
     const adCount = adType === 'monetag' ? monetagAdCount : gigapubAdCount;
     const breakEnd = adType === 'monetag' ? monetagBreakEnd : gigapubBreakEnd;
     
@@ -602,42 +654,88 @@
       return;
     }
     
-    const dailyLimit = adType === 'monetag' ? (parseInt(appConfig.monetagDailyLimit) || 25) : (parseInt(appConfig.gigapubDailyLimit) || 25);
+    const dailyLimit = adType === 'monetag'
+      ? (parseInt(appConfig.monetagDailyLimit) || 25)
+      : (parseInt(appConfig.gigapubDailyLimit) || 25);
+    
     const currentCount = userState[`${adType}AdCount`] || 0;
-    if(currentCount >= dailyLimit) { showAlert(`Daily ${adType} ad limit reached`); return; }
+    if(currentCount >= dailyLimit) {
+      showAlert(`Daily ${adType} ad limit reached`);
+      return;
+    }
     
     adLocks[adType] = true;
     
     const popupMsg = appConfig.adsPopupMessage || "এড দেখার পরে ১৫ সেকেন্ড অপেক্ষা করুন, অন্যথায় পেমেন্ট পাবেন না।";
-    document.getElementById('global-popup-body').innerHTML = `<div style="text-align:center"><h3>⚠️ Attention</h3><p>${popupMsg}</p><button id="adConfirmBtn" class="action-btn">OK, Watch Ad</button></div>`;
+    document.getElementById('global-popup-body').innerHTML = `
+      <div style="text-align:center">
+        <h3>⚠️ Attention</h3>
+        <p>${popupMsg}</p>
+        <button id="adConfirmBtn" class="action-btn">OK, Watch Ad</button>
+      </div>
+    `;
     showModal('global-popup');
     
     document.getElementById('adConfirmBtn').onclick = async () => {
       hideModal('global-popup');
-      showModal('global-popup');
-      document.getElementById('global-popup-body').innerHTML = `<div style="text-align:center"><div class="spinner"></div><p>Loading ${adType} advertisement...</p></div>`;
       
-      let success = false, retryCount = 0;
+      showModal('global-popup');
+      document.getElementById('global-popup-body').innerHTML = `
+        <div style="text-align:center">
+          <div class="spinner"></div>
+          <p>Loading ${adType} advertisement...</p>
+        </div>
+      `;
+      
+      let success = false;
+      let retryCount = 0;
+      
       while(!success && retryCount < 2) {
-        try { success = adType === 'monetag' ? await runMonetagAd() : await runGigapubAd(); } catch(e) {}
+        try {
+          if(adType === 'monetag') {
+            success = await runMonetagAd();
+          } else {
+            success = await runGigapubAd();
+          }
+        } catch(e) {
+          console.warn(`${adType} ad attempt ${retryCount + 1} failed`, e);
+        }
         retryCount++;
         if(!success && retryCount < 2) {
-          document.getElementById('global-popup-body').innerHTML = `<div style="text-align:center"><div class="spinner"></div><p>Retrying... (${retryCount}/2)</p></div>`;
+          document.getElementById('global-popup-body').innerHTML = `
+            <div style="text-align:center">
+              <div class="spinner"></div>
+              <p>Retrying... (${retryCount}/2)</p>
+            </div>
+          `;
           await new Promise(r => setTimeout(r, 1000));
         }
       }
+      
       hideModal('global-popup');
       
       if(success) {
-        const reward = adType === 'monetag' ? (parseFloat(appConfig.monetagReward) || 10) : (parseFloat(appConfig.gigapubReward) || 10);
+        const reward = adType === 'monetag'
+          ? (parseFloat(appConfig.monetagReward) || 10)
+          : (parseFloat(appConfig.gigapubReward) || 10);
+        
         userState.earningWallet = (userState.earningWallet || 0) + reward;
         userState[`${adType}AdCount`] = (userState[`${adType}AdCount`] || 0) + 1;
         userState.dailyAdCount = (userState.dailyAdCount || 0) + 1;
         userState.lifetimeAdCount = (userState.lifetimeAdCount || 0) + 1;
         userState.totalEarned = (userState.totalEarned || 0) + reward;
         
-        if(adType === 'monetag') { monetagAdCount++; if(monetagAdCount >= breakAfter) monetagBreakEnd = Date.now() + (breakDuration * 1000); }
-        else { gigapubAdCount++; if(gigapubAdCount >= breakAfter) gigapubBreakEnd = Date.now() + (breakDuration * 1000); }
+        if(adType === 'monetag') {
+          monetagAdCount++;
+          if(monetagAdCount >= breakAfter) {
+            monetagBreakEnd = Date.now() + (breakDuration * 1000);
+          }
+        } else {
+          gigapubAdCount++;
+          if(gigapubAdCount >= breakAfter) {
+            gigapubBreakEnd = Date.now() + (breakDuration * 1000);
+          }
+        }
         
         await db.ref(`users/${tgUser.id}`).update({
           earningWallet: userState.earningWallet,
@@ -652,10 +750,15 @@
         await addHistory('Watch Ad', `Watched ${adType} Ad`, reward, 'Completed');
         await processReferralEarnings(tgUser.id, reward, `${adType} Ad`);
         await sendAdminNotification(`📺 ${adType} Ad Watched\nUser: ${userState.firstName} (${tgUser.id})\nReward: ${reward} Coins`);
+        
         showAlert(`✅ +${reward} Coins earned!`);
+        
         renderAll();
         renderAdProgress();
-      } else { showAlert("❌ Ad failed to load. Please try again later."); }
+      } else {
+        showAlert("❌ Ad failed to load. Please try again later.");
+      }
+      
       adLocks[adType] = false;
     };
   }
@@ -667,108 +770,177 @@
     snap.forEach(c => tasks.push({ key: c.key, ...c.val() }));
     return tasks;
   }
-
+  
   async function renderRegTasksPage() {
     let tasks = await loadRegTasks();
     let userCompletions = (await db.ref(`users/${tgUser.id}/regTaskCompletions`).once('value')).val() || {};
     let userRequestsSnap = await db.ref(`regTaskRequests`).orderByChild('userId').equalTo(tgUser.id).once('value');
-    let userRequests = [];
-    userRequestsSnap.forEach(r => userRequests.push({ key: r.key, ...r.val() }));
+    let userRequests = userRequestsSnap.val() || {};
     
     let container = document.getElementById('reg-tasks-container');
     if(!container) return;
-    if(tasks.length === 0) { container.innerHTML = '<p style="text-align:center; padding:30px;">No registration tasks available.</p>'; return; }
+    
+    if(tasks.length === 0) { 
+      container.innerHTML = '<p style="text-align:center; padding:30px;">No registration tasks available.</p>'; 
+      return; 
+    }
     
     let html = '';
     for(let task of tasks) {
       let completion = userCompletions[task.key];
-      let activeRequest = userRequests.find(r => r.taskId === task.key && r.status !== 'completed');
+      let activeRequest = null;
+      for(let r in userRequests) {
+        if(userRequests[r].taskId === task.key && userRequests[r].status !== 'completed') {
+          activeRequest = userRequests[r];
+          break;
+        }
+      }
+      
       let statusHtml = '';
       
       if(completion && completion.completed) {
-        statusHtml = `<div class="rejection-reason" style="background:#D1FAE5; color:#059669;"><i class="fas fa-check-circle"></i> Task Completed! +${completion.reward} Coins earned</div>
-                      <button class="action-btn" onclick="window.retryRegTask('${task.key}')" style="margin-top:8px; width:100%;">🔄 Try Again</button>`;
+        statusHtml = `
+          <div class="rejection-reason" style="background:#D1FAE5; color:#059669;">
+            <i class="fas fa-check-circle"></i> Task Completed! +${completion.reward} Coins earned
+          </div>
+          <button class="action-btn" onclick="window.retryRegTask('${task.key}')" style="margin-top:8px; width:100%;">🔄 Try Again</button>
+        `;
       } else if(activeRequest) {
         if(activeRequest.status === 'pending') {
-          statusHtml = `<div class="rejection-reason" style="background:#FEF3C7; color:#D97706;"><i class="fas fa-clock"></i> Pending Admin Approval</div>`;
+          statusHtml = `
+            <div class="rejection-reason" style="background:#FEF3C7; color:#D97706;">
+              <i class="fas fa-clock"></i> Pending Admin Approval
+            </div>
+          `;
         } else if(activeRequest.status === 'confirmed') {
           let startTime = activeRequest.confirmTime || 0;
           let elapsed = Date.now() - startTime;
           let remaining = 30 * 60 * 1000 - elapsed;
           if(remaining > 0) {
-            statusHtml = `<div class="rejection-reason" style="background:#E0E7FF; color:#4F46E5;"><i class="fas fa-check-circle"></i> Task Confirmed!<p>⏳ Wait <span id="countdown-${task.key}" class="countdown-timer" data-end="${startTime + 30*60*1000}">${formatSeconds(Math.floor(remaining/1000))}</span> to receive reward</p></div>`;
-          } else { await autoCompleteRegTask(task.key, activeRequest, task); }
+            statusHtml = `
+              <div class="rejection-reason" style="background:#E0E7FF; color:#4F46E5;">
+                <i class="fas fa-check-circle"></i> Task Confirmed!
+                <p>⏳ Wait <span id="countdown-${task.key}" class="countdown-timer" data-end="${startTime + 30*60*1000}">${formatSeconds(Math.floor(remaining/1000))}</span> to receive reward</p>
+              </div>
+            `;
+          } else {
+            await autoCompleteRegTask(task.key, activeRequest, task);
+          }
         } else if(activeRequest.status === 'rejected') {
-          statusHtml = `<div class="rejection-reason" style="background:#FEE2E2; color:#DC2626;"><i class="fas fa-times-circle"></i> Task Rejected<p>${activeRequest.rejectReason || 'Your submission was rejected.'}</p></div>
-                        <button class="action-btn" onclick="window.retryRegTask('${task.key}')" style="margin-top:8px; width:100%; background:#DC2626;">🔄 Try Again</button>`;
+          statusHtml = `
+            <div class="rejection-reason" style="background:#FEE2E2; color:#DC2626;">
+              <i class="fas fa-times-circle"></i> Task Rejected
+              <p>${activeRequest.rejectReason || 'Your submission was rejected.'}</p>
+            </div>
+            <button class="action-btn" onclick="window.retryRegTask('${task.key}')" style="margin-top:8px; width:100%; background:#DC2626;">🔄 Try Again</button>
+          `;
         }
       } else {
-        statusHtml = `<div class="reg-task-actions"><button class="action-btn" onclick="window.viewRegTaskDesc('${task.key}')">📄 View Details</button><button class="action-btn" onclick="window.startRegTask('${task.key}', '${task.registerLink}')">📝 Register</button></div>`;
+        statusHtml = `
+          <div class="reg-task-actions">
+            <button class="action-btn" onclick="window.viewRegTaskDesc('${task.key}')">📄 View Details</button>
+            <button class="action-btn" onclick="window.startRegTask('${task.key}', '${task.registerLink}')">📝 Register</button>
+          </div>
+        `;
       }
       
-      html += `<div class="reg-task-item"><div class="reg-task-header"><img class="reg-task-img" src="${task.image}" onerror="this.src='https://via.placeholder.com/55'"><div><h4>${escapeHtml(task.name)}</h4><p style="color:#E74C3C; font-weight:600;">💰 ${task.reward} Coins</p></div></div>${statusHtml}</div>`;
+      html += `
+        <div class="reg-task-item">
+          <div class="reg-task-header">
+            <img class="reg-task-img" src="${task.image}" onerror="this.src='https://via.placeholder.com/55'">
+            <div>
+              <h4>${escapeHtml(task.name)}</h4>
+              <p style="color:#E74C3C; font-weight:600;">💰 ${task.reward} Coins</p>
+            </div>
+          </div>
+          ${statusHtml}
+        </div>
+      `;
     }
     container.innerHTML = html;
   }
-
+  
   async function autoCompleteRegTask(taskId, request, task) {
     const reward = task.reward || 0;
     await db.ref(`users/${tgUser.id}/earningWallet`).transaction(v => (v || 0) + reward);
     await db.ref(`users/${tgUser.id}/totalEarned`).transaction(v => (v || 0) + reward);
-    await db.ref(`users/${tgUser.id}/regTaskCompletions/${taskId}`).set({ completed: true, reward: reward, timestamp: Date.now() });
+    await db.ref(`users/${tgUser.id}/regTaskCompletions/${taskId}`).set({
+      completed: true, reward: reward, timestamp: Date.now()
+    });
     await db.ref(`regTaskRequests/${request.id}`).update({ status: 'completed' });
     await addHistory('Registration Task', task.name, reward, 'Completed');
     await processReferralEarnings(tgUser.id, reward, 'Registration Task');
     await sendAdminNotification(`✅ Reg Task Auto-Completed\nUser: ${userState.firstName} (${tgUser.id})\nTask: ${task.name}\nReward: ${reward} Coins`);
+    
     userState.earningWallet = (userState.earningWallet || 0) + reward;
     userState.totalEarned = (userState.totalEarned || 0) + reward;
-    showAlert(`🎉 Congratulations! You earned ${reward} Coins for completing "${task.name}"!`, () => { renderAll(); renderRegTasksPage(); });
+    
+    showAlert(`🎉 Congratulations! You earned ${reward} Coins for completing "${task.name}"!`, () => {
+      renderAll();
+      renderRegTasksPage();
+    });
   }
-
+  
   window.viewRegTaskDesc = async (taskId) => {
     let tasks = await loadRegTasks();
     let task = tasks.find(t => t.key === taskId);
     if(!task) return;
     let descHtml = `<div class="modal-header"><h3>${escapeHtml(task.title || task.name)}</h3><span class="close-modal">&times;</span></div>`;
     descHtml += `<div style="padding:10px;"><p>${escapeHtml(task.description || '')}</p>`;
-    if(task.descImages && task.descImages.length) descHtml += `<div>${task.descImages.map(img => `<img src="${img}" class="desc-modal-img" style="max-width:100%;">`).join('')}</div>`;
+    if(task.descImages && task.descImages.length) {
+      descHtml += `<div>${task.descImages.map(img => `<img src="${img}" class="desc-modal-img" style="max-width:100%;">`).join('')}</div>`;
+    }
     descHtml += `<button class="action-btn close-modal" style="width:100%; margin-top:16px;">Close</button></div>`;
     document.getElementById('regTaskDescBody').innerHTML = descHtml;
     showModal('regTaskDescModal');
     document.querySelectorAll('#regTaskDescModal .close-modal').forEach(el => el.onclick = () => hideModal('regTaskDescModal'));
   };
-
+  
   window.startRegTask = async (taskId, registerLink) => {
     if(registerLink) tg.openLink(registerLink);
     setTimeout(() => {
-      document.getElementById('regTaskSubmitBody').innerHTML = `<div class="modal-header"><h3>📤 Submit Your Task</h3><span class="close-modal">&times;</span></div><div style="text-align:center; padding:20px;"><p>After completing registration, click Submit to send for approval.</p><button class="action-btn" onclick="window.submitRegTask('${taskId}')" style="width:100%; margin-top:16px;">📤 Submit for Review</button><button class="action-btn-secondary" onclick="hideModal('regTaskSubmitModal')" style="width:100%; margin-top:8px;">Cancel</button></div>`;
+      document.getElementById('regTaskSubmitBody').innerHTML = `
+        <div class="modal-header"><h3>📤 Submit Your Task</h3><span class="close-modal">&times;</span></div>
+        <div style="text-align:center; padding:20px;">
+          <p>After completing registration, click Submit to send for approval.</p>
+          <button class="action-btn" onclick="window.submitRegTask('${taskId}')" style="width:100%; margin-top:16px;">📤 Submit for Review</button>
+          <button class="action-btn-secondary" onclick="hideModal('regTaskSubmitModal')" style="width:100%; margin-top:8px;">Cancel</button>
+        </div>
+      `;
       showModal('regTaskSubmitModal');
       document.querySelectorAll('#regTaskSubmitModal .close-modal').forEach(el => el.onclick = () => hideModal('regTaskSubmitModal'));
     }, 2000);
   };
-
+  
   window.submitRegTask = async (taskId) => {
     hideModal('regTaskSubmitModal');
     let tasks = await loadRegTasks();
     let task = tasks.find(t => t.key === taskId);
     if(!task) return;
+    
     let reqId = db.ref('regTaskRequests').push().key;
-    await db.ref(`regTaskRequests/${reqId}`).set({ id: reqId, userId: tgUser.id, userName: `${userState.firstName || ''} ${userState.lastName || ''}`, userPhoto: userState.photoUrl, taskId: taskId, taskName: task.name, status: 'pending', timestamp: Date.now() });
+    await db.ref(`regTaskRequests/${reqId}`).set({
+      id: reqId, userId: tgUser.id, 
+      userName: `${userState.firstName || ''} ${userState.lastName || ''}`,
+      userPhoto: userState.photoUrl, taskId: taskId, taskName: task.name,
+      status: 'pending', timestamp: Date.now()
+    });
+    
     await sendAdminNotification(`📝 New Reg Task Request\nUser: ${userState.firstName} (${tgUser.id})\nTask: ${task.name}`);
     showAlert("✅ Your task has been submitted for review!\n\nAdmin will check and confirm within 24 hours.");
     renderRegTasksPage();
   };
-
+  
   window.retryRegTask = async (taskId) => {
     await db.ref(`users/${tgUser.id}/regTaskCompletions/${taskId}`).remove();
-    let requestsSnap = await db.ref(`regTaskRequests`).orderByChild('userId').equalTo(tgUser.id).once('value');
-    requestsSnap.forEach(r => { if(r.val().taskId === taskId) r.ref.remove(); });
+    let requests = await db.ref(`regTaskRequests`).orderByChild('userId').equalTo(tgUser.id).once('value');
+    requests.forEach(r => { if(r.val().taskId === taskId) r.ref.remove(); });
     renderRegTasksPage();
   };
-
+  
   window.openLink = (url) => { if(url) tg.openLink(url); };
 
-  // ========== TG TASKS (FIXED) ==========
+  // ========== TG TASKS ==========
   async function renderTgTasks(){
     let snap = await db.ref('config/tasks').once('value');
     let tasks = [];
@@ -776,7 +948,11 @@
     
     let container = document.getElementById('dynamic-tasks-container');
     if(!container) return;
-    if(tasks.length === 0) { container.innerHTML = '<p style="text-align:center; padding:30px;">No TG tasks available.</p>'; return; }
+    
+    if(tasks.length === 0) { 
+      container.innerHTML = '<p style="text-align:center; padding:30px;">No TG tasks available.</p>'; 
+      return; 
+    }
     
     let html = '';
     for(let task of tasks){
@@ -784,15 +960,27 @@
       let timer = userState.tgTaskTimers?.[task.key];
       let btn = '';
       
-      if(completed) { btn = `<button class="action-btn" disabled>✅ Claimed</button>`; }
-      else if(timer && timer.checkStartTime){
+      if(completed) {
+        btn = `<button class="action-btn" disabled>✅ Claimed</button>`;
+      } else if(timer && timer.checkStartTime){
         let elapsed = Date.now() - timer.checkStartTime;
-        if(elapsed >= 30*60*1000) btn = `<button class="action-btn tg-claim-btn" data-id="${task.key}">🎁 Claim Reward</button>`;
-        else { let rem = Math.ceil((30*60*1000 - elapsed)/1000); btn = `<button class="action-btn" disabled>⏳ Verifying <span class="countdown-timer" data-end="${timer.checkStartTime + 30*60*1000}">${formatTime(rem)}</span></button>`; }
-      } else if(timer && timer.startTime) { btn = `<button class="action-btn tg-check-btn" data-id="${task.key}">✅ Check</button>`; }
-      else { btn = `<button class="action-btn tg-start-btn" data-id="${task.key}" data-url="${task.url}">➕ Join</button>`; }
+        if(elapsed >= 30*60*1000) {
+          btn = `<button class="action-btn tg-claim-btn" data-id="${task.key}">🎁 Claim Reward</button>`;
+        } else {
+          let rem = Math.ceil((30*60*1000 - elapsed)/1000);
+          btn = `<button class="action-btn" disabled>⏳ Verifying <span class="countdown-timer" data-end="${timer.checkStartTime + 30*60*1000}">${formatTime(rem)}</span></button>`;
+        }
+      } else if(timer && timer.startTime){
+        btn = `<button class="action-btn tg-check-btn" data-id="${task.key}">✅ Check</button>`;
+      } else {
+        btn = `<button class="action-btn tg-start-btn" data-id="${task.key}" data-url="${task.url}">➕ Join</button>`;
+      }
       
-      html += `<div class="task-container"><img class="task-icon-img" src="${task.icon}" onerror="this.src='https://via.placeholder.com/52'"><div class="task-info"><h3>${escapeHtml(task.name)}</h3><p>+${task.reward} Coins</p></div>${btn}</div>`;
+      html += `<div class="task-container">
+        <img class="task-icon-img" src="${task.icon}" onerror="this.src='https://via.placeholder.com/52'">
+        <div class="task-info"><h3>${escapeHtml(task.name)}</h3><p>+${task.reward} Coins</p></div>
+        ${btn}
+      </div>`;
     }
     container.innerHTML = html;
     
@@ -819,13 +1007,16 @@
       let taskSnap = await db.ref(`config/tasks/${id}`).once('value');
       let task = taskSnap.val();
       if(!task) return;
+      
       await db.ref(`users/${tgUser.id}/completedTasks/${id}`).set(true);
       await db.ref(`users/${tgUser.id}/earningWallet`).transaction(v => (v||0) + task.reward);
       await db.ref(`users/${tgUser.id}/totalEarned`).transaction(v => (v||0) + task.reward);
+      
       userState.earningWallet = (userState.earningWallet || 0) + task.reward;
       userState.totalEarned = (userState.totalEarned || 0) + task.reward;
       if(!userState.completedTasks) userState.completedTasks = {};
       userState.completedTasks[id] = true;
+      
       await addHistory('TG Task', task.name, task.reward, 'Completed');
       await processReferralEarnings(tgUser.id, task.reward, 'TG Task');
       await sendAdminNotification(`✅ TG Task Completed\nUser: ${userState.firstName} (${tgUser.id})\nTask: ${task.name}\nReward: ${task.reward} Coins`);
@@ -835,7 +1026,7 @@
     }));
   }
 
-  // ========== WEB TASKS (FIXED) ==========
+  // ========== WEB TASKS (UNLIMITED) ==========
   async function renderWebTasks(){
     try {
       let tasksSnap = await db.ref('config/webTasks').once('value');
@@ -845,26 +1036,46 @@
       let userCompleted = (await db.ref(`users/${tgUser.id}/completedWebTasks`).once('value')).val() || {};
       let container = document.getElementById('web-tasks-container');
       if(!container) return;
-      if(tasks.length === 0) { container.innerHTML = '<p style="text-align:center; padding:30px;">No web tasks available.</p>'; return; }
+      
+      if(tasks.length === 0) { 
+        container.innerHTML = '<p style="text-align:center; padding:30px;">No web tasks available.</p>'; 
+        return; 
+      }
       
       let html = '';
       for(let task of tasks){
         let done = userCompleted[task.key];
         let timer = userState.webTaskTimers?.[task.key];
         let btn = '';
-        if(done) btn = `<button class="action-btn" disabled>✅ Claimed</button>`;
-        else if(timer && timer.startTime) btn = `<button class="action-btn web-check-btn" data-key="${task.key}">✅ Check</button>`;
-        else btn = `<button class="action-btn web-start-btn" data-key="${task.key}" data-url="${task.url}">▶️ Start</button>`;
-        html += `<div class="task-container"><img class="task-icon-img" src="${task.icon}" onerror="this.src='https://via.placeholder.com/52'"><div class="task-info"><h3>${escapeHtml(task.name)}</h3><p>Reward: ${task.reward} Coins</p></div>${btn}</div>`;
+        
+        if(done) {
+          btn = `<button class="action-btn" disabled>✅ Claimed</button>`;
+        } else if(timer && timer.startTime) {
+          btn = `<button class="action-btn web-check-btn" data-key="${task.key}">✅ Check</button>`;
+        } else {
+          btn = `<button class="action-btn web-start-btn" data-key="${task.key}" data-url="${task.url}">▶️ Start</button>`;
+        }
+        
+        html += `<div class="task-container">
+          <img class="task-icon-img" src="${task.icon}" onerror="this.src='https://via.placeholder.com/52'">
+          <div class="task-info"><h3>${escapeHtml(task.name)}</h3><p>Reward: ${task.reward} Coins</p></div>
+          ${btn}
+        </div>`;
       }
       container.innerHTML = html;
       
       document.querySelectorAll('.web-start-btn').forEach(btn => btn.addEventListener('click', async (e) => {
         let key = btn.dataset.key, url = btn.dataset.url;
         let popupMsg = appConfig.popup?.webTaskPopup || "Read instructions carefully and stay on the page for 30 seconds.";
-        document.getElementById('webTaskPopupBody').innerHTML = `<div class="modal-header"><h3>🌐 Web Task</h3><span class="close-modal">&times;</span></div><div style="padding:16px;"><p>${popupMsg}</p><button id="webTaskPopupConfirm" class="action-btn" style="width:100%;">ঠিক আছে</button></div>`;
+        
+        document.getElementById('webTaskPopupBody').innerHTML = `
+          <div class="modal-header"><h3>🌐 Web Task</h3><span class="close-modal">&times;</span></div>
+          <div style="padding:16px;"><p>${popupMsg}</p>
+          <button id="webTaskPopupConfirm" class="action-btn" style="width:100%;">ঠিক আছে</button></div>
+        `;
         showModal('webTaskPopupModal');
         document.querySelector('#webTaskPopupModal .close-modal').onclick = () => hideModal('webTaskPopupModal');
+        
         document.getElementById('webTaskPopupConfirm').onclick = () => {
           hideModal('webTaskPopupModal');
           tg.openLink(url);
@@ -883,18 +1094,23 @@
         let tasksSnap = await db.ref('config/webTasks').once('value');
         let task = null;
         tasksSnap.forEach(c => { if(c.key === key) task = c.val(); });
+        
         if(!timer || !task) return;
         let timeSpent = Date.now() - timer.startTime;
+        
         if(timeSpent >= 30000) {
           await db.ref(`users/${tgUser.id}/completedWebTasks/${key}`).set(true);
           await db.ref(`users/${tgUser.id}/earningWallet`).transaction(v => (v||0) + task.reward);
           await db.ref(`users/${tgUser.id}/totalEarned`).transaction(v => (v||0) + task.reward);
+          
           userState.earningWallet = (userState.earningWallet || 0) + task.reward;
           userState.totalEarned = (userState.totalEarned || 0) + task.reward;
+          
           await addHistory('Web Task', task.name, task.reward, 'Completed');
           await processReferralEarnings(tgUser.id, task.reward, 'Web Task');
           await sendAdminNotification(`✅ Web Task Completed\nUser: ${userState.firstName} (${tgUser.id})\nTask: ${task.name}\nReward: ${task.reward} Coins`);
           showAlert(`🎉 +${task.reward} Coins added!`);
+          
           await db.ref(`users/${tgUser.id}/webTaskTimers/${key}`).remove();
           delete userState.webTaskTimers[key];
         } else {
@@ -909,7 +1125,7 @@
     } catch(e) { console.error("Error loading web tasks:", e); }
   }
 
-  // ========== SUPPORT LINKS (FIXED) ==========
+  // ========== SUPPORT LINKS ==========
   async function renderSupportLinksModal() {
     try {
       let linksSnap = await db.ref('config/links').once('value');
@@ -918,70 +1134,136 @@
       
       let html = `<div class="modal-header"><h3>📞 Support Center</h3><span class="close-modal">&times;</span></div><div class="support-link-grid">`;
       if(links.length === 0) html += '<p>No support links available.</p>';
-      links.forEach(link => { html += `<a href="${link.url}" target="_blank" class="support-card"><img src="${link.icon}" onerror="this.src='https://via.placeholder.com/50'"><span>${escapeHtml(link.name)}</span></a>`; });
+      
+      links.forEach(link => {
+        html += `<a href="${link.url}" target="_blank" class="support-card">
+          <img src="${link.icon}" onerror="this.src='https://via.placeholder.com/50'"><span>${escapeHtml(link.name)}</span>
+        </a>`;
+      });
       html += `</div>`;
+      
       document.getElementById('global-popup-body').innerHTML = html;
       showModal('global-popup');
       document.querySelector('#global-popup .close-modal').onclick = () => hideModal('global-popup');
     } catch(e) { console.error("Error loading support links:", e); }
   }
 
-  // ========== REFERRAL SECTION (FIXED) ==========
+  // ========== REFERRAL SECTION ==========
   function renderReferralSection(){
     let botUsername = appConfig.botUsername || 'YourBot';
     let link = `https://t.me/${botUsername}?start=${tgUser.id}`;
     
     let container = document.getElementById('referral-section');
     if(container){
-      container.innerHTML = `<div class="referral-card-premium"><h3><i class="fas fa-gift"></i> Refer & Earn</h3><div class="referral-link-box"><input id="ref-link" value="${link}" readonly><button id="copy-ref" class="copy-btn-premium"><i class="fas fa-copy"></i> Copy</button></div><div style="display:flex; gap:15px; justify-content:center; width:100%; margin-top:8px;"><span><i class="fas fa-users"></i> ${userState.referrals || 0} Referrals</span><span><i class="fas fa-percent"></i> ${appConfig.referralPercent || 0}% Commission</span></div></div>`;
-      document.getElementById('copy-ref').onclick = () => { navigator.clipboard.writeText(link); showAlert("✅ Referral link copied!"); };
+      container.innerHTML = `
+        <div class="referral-card-premium">
+          <h3><i class="fas fa-gift"></i> Refer & Earn</h3>
+          <div class="referral-link-box">
+            <input id="ref-link" value="${link}" readonly>
+            <button id="copy-ref" class="copy-btn-premium"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+          <div style="display:flex; gap:15px; justify-content:center; width:100%; margin-top:8px;">
+            <span><i class="fas fa-users"></i> ${userState.referrals || 0} Referrals</span>
+            <span><i class="fas fa-percent"></i> ${appConfig.referralPercent || 0}% Commission</span>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('copy-ref').onclick = () => { 
+        navigator.clipboard.writeText(link); 
+        showAlert("✅ Referral link copied!"); 
+      };
     }
   }
 
   // ========== WITHDRAWAL ==========
   async function startWithdraw(type){
     let minRef = appConfig.withdrawReferralLimit || 0;
-    if((userState.referrals || 0) < minRef){ let popup = appConfig.popup || {}; showAlert(popup.withdrawRefPopupDesc || `Withdrawal requires at least ${minRef} referrals.`); return; }
+    if((userState.referrals || 0) < minRef){ 
+      let popup = appConfig.popup || {};
+      showAlert(popup.withdrawRefPopupDesc || `Withdrawal requires at least ${minRef} referrals.`); 
+      return; 
+    }
     
     let methods = type === 'bdt' ? (appConfig.withdrawBDTMethods || []) : (appConfig.withdrawUSDTMethods || []);
     if(!methods.length){ showAlert("No withdrawal methods available"); return; }
     
     let grid = `<div class="modal-header"><h3>Select ${type.toUpperCase()} Method</h3><span class="close-modal">&times;</span></div><div class="methods-grid-3">`;
-    grid += methods.map((m, i) => `<div class="method-card-item" data-idx="${i}"><img src="${m.photo}" onerror="this.src='https://via.placeholder.com/70'"><p style="font-size:0.7rem; margin-top:5px;">${escapeHtml(m.name)}</p></div>`).join('') + `</div>`;
+    grid += methods.map((m, i) => 
+      `<div class="method-card-item" data-idx="${i}">
+        <img src="${m.photo}" onerror="this.src='https://via.placeholder.com/70'">
+        <p style="font-size:0.7rem; margin-top:5px;">${escapeHtml(m.name)}</p>
+      </div>`
+    ).join('') + `</div>`;
     
     document.getElementById('withdraw-flow-container').innerHTML = grid;
     showModal('withdraw-flow-modal');
     document.querySelector('#withdraw-flow-modal .close-modal').onclick = () => hideModal('withdraw-flow-modal');
     
-    document.querySelectorAll('.method-card-item[data-idx]').forEach(el => { el.addEventListener('click', async () => {
-      let idx = parseInt(el.dataset.idx), method = methods[idx], rate = type === 'bdt' ? (appConfig.coinToBDT || 0.5) : (appConfig.coinToUSDT || 0.004);
-      
-      let formHtml = `<div class="modal-header"><h3>${escapeHtml(method.name)}</h3><span class="close-modal">&times;</span></div><div style="padding:10px;"><div class="withdraw-form-group"><label>Account Number/Address</label><input id="acc" class="premium-input" placeholder="Enter ${type === 'bdt' ? 'Number' : 'Address'}"></div><div class="withdraw-form-group"><label>Amount (Coins) - Min: ${method.min || 0}</label><input type="number" id="coins" class="premium-input" min="${method.min || 0}"></div><p style="margin:10px 0;">You get: <strong id="fiatVal">0</strong> ${type.toUpperCase()}</p><p style="font-size:0.75rem; opacity:0.7;">Rate: 1 Coin = ${rate} ${type.toUpperCase()}</p><button id="confirmW" class="action-btn" style="width:100%;">Submit Request</button></div>`;
-      
-      document.getElementById('withdraw-flow-container').innerHTML = formHtml;
-      document.querySelector('#withdraw-flow-modal .close-modal').onclick = () => hideModal('withdraw-flow-modal');
-      
-      let coinsInp = document.getElementById('coins');
-      coinsInp.addEventListener('input', () => { let c = parseFloat(coinsInp.value) || 0; document.getElementById('fiatVal').innerText = (c * rate).toFixed(2); });
-      
-      document.getElementById('confirmW').addEventListener('click', async () => {
-        let account = document.getElementById('acc').value.trim(), coinAmount = parseFloat(coinsInp.value);
-        if(!account || isNaN(coinAmount) || coinAmount < (method.min || 0)) { showAlert(`Minimum ${method.min || 0} coins required`); return; }
-        if(coinAmount > userState.balance){ showAlert("Insufficient balance"); return; }
+    document.querySelectorAll('.method-card-item[data-idx]').forEach(el => { 
+      el.addEventListener('click', async () => {
+        let idx = parseInt(el.dataset.idx), method = methods[idx], 
+            rate = type === 'bdt' ? (appConfig.coinToBDT || 0.5) : (appConfig.coinToUSDT || 0.004);
         
-        await db.ref(`users/${tgUser.id}/balance`).set(userState.balance - coinAmount);
-        userState.balance -= coinAmount;
+        let formHtml = `
+          <div class="modal-header"><h3>${escapeHtml(method.name)}</h3><span class="close-modal">&times;</span></div>
+          <div style="padding:10px;">
+            <div class="withdraw-form-group">
+              <label>Account Number/Address</label>
+              <input id="acc" class="premium-input" placeholder="Enter ${type === 'bdt' ? 'Number' : 'Address'}">
+            </div>
+            <div class="withdraw-form-group">
+              <label>Amount (Coins) - Min: ${method.min || 0}</label>
+              <input type="number" id="coins" class="premium-input" min="${method.min || 0}">
+            </div>
+            <p style="margin:10px 0;">You get: <strong id="fiatVal">0</strong> ${type.toUpperCase()}</p>
+            <p style="font-size:0.75rem; opacity:0.7;">Rate: 1 Coin = ${rate} ${type.toUpperCase()}</p>
+            <button id="confirmW" class="action-btn" style="width:100%;">Submit Request</button>
+          </div>
+        `;
         
-        let reqId = db.ref('withdrawals/pending').push().key;
-        await db.ref(`withdrawals/pending/${reqId}`).set({ id: reqId, userId: tgUser.id, userName: `${userState.firstName} ${userState.lastName || ''}`, method: method.name, account, amount: coinAmount, status: 'pending', timestamp: firebase.database.ServerValue.TIMESTAMP, type });
-        await sendAdminNotification(`💰 Withdrawal Request\nUser: ${userState.firstName} (${tgUser.id})\nAmount: ${coinAmount} Coins\nMethod: ${method.name}`);
-        showAlert("✅ Withdraw request submitted!");
-        hideModal('withdraw-flow-modal'); hideModal('wallet-modal');
-        renderAll(); renderPendingWithdrawBanner();
+        document.getElementById('withdraw-flow-container').innerHTML = formHtml;
+        document.querySelector('#withdraw-flow-modal .close-modal').onclick = () => hideModal('withdraw-flow-modal');
+        
+        let coinsInp = document.getElementById('coins');
+        coinsInp.addEventListener('input', () => { 
+          let c = parseFloat(coinsInp.value) || 0; 
+          document.getElementById('fiatVal').innerText = (c * rate).toFixed(2); 
+        });
+        
+        document.getElementById('confirmW').addEventListener('click', async () => {
+          let account = document.getElementById('acc').value.trim(), 
+              coinAmount = parseFloat(coinsInp.value);
+              
+          if(!account || isNaN(coinAmount) || coinAmount < (method.min || 0)) { 
+            showAlert(`Minimum ${method.min || 0} coins required`); 
+            return; 
+          }
+          if(coinAmount > userState.balance){ showAlert("Insufficient balance"); return; }
+          
+          await db.ref(`users/${tgUser.id}/balance`).set(userState.balance - coinAmount);
+          userState.balance -= coinAmount;
+          
+          let reqId = db.ref('withdrawals/pending').push().key;
+          await db.ref(`withdrawals/pending/${reqId}`).set({ 
+            id: reqId, userId: tgUser.id, userName: `${userState.firstName} ${userState.lastName || ''}`, 
+            method: method.name, account, amount: coinAmount, status: 'pending', 
+            timestamp: firebase.database.ServerValue.TIMESTAMP, type 
+          });
+          
+          await sendAdminNotification(`💰 Withdrawal Request\nUser: ${userState.firstName} (${tgUser.id})\nAmount: ${coinAmount} Coins\nMethod: ${method.name}`);
+          
+          showAlert("✅ Withdraw request submitted!");
+          hideModal('withdraw-flow-modal'); 
+          hideModal('wallet-modal');
+          
+          renderAll();
+          renderPendingWithdrawBanner();
+        });
       });
-    }); });
+    });
   }
-
+  
   async function renderPendingWithdrawBanner() {
     let container = document.getElementById('pending-withdraw-banner-container');
     if(!container) return;
@@ -990,16 +1272,34 @@
     let pending = [];
     pendingSnap.forEach(p => pending.push(p.val()));
     
-    if(pending.length === 0) { container.innerHTML = ''; return; }
+    if(pending.length === 0) {
+      container.innerHTML = '';
+      return;
+    }
+    
     let req = pending[0];
     let config = appConfig;
     let rate = req.type === 'bdt' ? (config.coinToBDT || 0.5) : (config.coinToUSDT || 0.004);
     let fiatAmount = (req.amount * rate).toFixed(2);
     let currency = req.type === 'bdt' ? 'BDT' : 'USDT';
     
-    container.innerHTML = `<div class="pending-withdraw-banner"><div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;"><i class="fas fa-hourglass-half" style="font-size:1.5rem; color:#F59E0B;"></i><h4 style="color:#92400E;">Withdrawal Pending</h4></div><div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.85rem;"><div><strong>Amount:</strong> ${req.amount} Coins</div><div><strong>Value:</strong> ${fiatAmount} ${currency}</div><div><strong>Method:</strong> ${escapeHtml(req.method)}</div><div><strong>Date:</strong> ${new Date(req.timestamp).toLocaleDateString()}</div></div><p style="margin-top:10px; font-size:0.75rem; opacity:0.8;">Your request is being processed. Please wait for admin approval.</p></div>`;
+    container.innerHTML = `
+      <div class="pending-withdraw-banner">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <i class="fas fa-hourglass-half" style="font-size:1.5rem; color:#F59E0B;"></i>
+          <h4 style="color:#92400E;">Withdrawal Pending</h4>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.85rem;">
+          <div><strong>Amount:</strong> ${req.amount} Coins</div>
+          <div><strong>Value:</strong> ${fiatAmount} ${currency}</div>
+          <div><strong>Method:</strong> ${escapeHtml(req.method)}</div>
+          <div><strong>Date:</strong> ${new Date(req.timestamp).toLocaleDateString()}</div>
+        </div>
+        <p style="margin-top:10px; font-size:0.75rem; opacity:0.8;">Your request is being processed. Please wait for admin approval.</p>
+      </div>
+    `;
   }
-
+  
   async function showWithdrawHistory(){
     let [pendingSnap, completedSnap, rejectedSnap] = await Promise.all([
       db.ref(`withdrawals/pending`).orderByChild('userId').equalTo(tgUser.id).once('value'),
@@ -1011,10 +1311,13 @@
     pendingSnap.forEach(r => items.push({ ...r.val(), status: 'Pending' }));
     completedSnap.forEach(r => items.push({ ...r.val(), status: 'Completed' }));
     rejectedSnap.forEach(r => items.push({ ...r.val(), status: 'Rejected' }));
+    
     items.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
     
     let config = appConfig;
+    
     let html = `<div class="modal-header"><h3>📋 Withdraw History</h3><span class="close-modal">&times;</span></div><div style="max-height:70vh; overflow-y:auto;">`;
+    
     if(!items.length) html += "<p style='text-align:center; padding:40px;'>No withdrawal history</p>";
     
     items.forEach(req => { 
@@ -1024,8 +1327,27 @@
       let fiatAmount = (req.amount * rate).toFixed(2);
       let currency = req.type === 'bdt' ? 'BDT' : 'USDT';
       
-      html += `<div class="history-item-premium ${statusClass}"><div class="history-header"><div style="display:flex; align-items:center; gap:12px; width:100%;"><div style="flex:1;"><div style="display:flex; justify-content:space-between;"><strong>${escapeHtml(req.method)}</strong><span class="history-status ${statusClass}">${req.status}</span></div><small>${date}</small></div></div></div><div style="display:flex; justify-content:space-between; margin-top:8px;"><span>💰 ${req.amount} Coins</span><span>💵 ${fiatAmount} ${currency}</span></div><p style="margin-top:8px; font-size:0.75rem;">Account: ${escapeHtml(req.account || 'N/A').substring(0,30)}...</p>${req.status === 'Rejected' && req.rejectReason ? `<p style="color:#EF4444; font-size:0.75rem; margin-top:5px;">❌ ${escapeHtml(req.rejectReason)}</p>` : ''}</div>`; 
+      html += `<div class="history-item-premium ${statusClass}">
+        <div class="history-header">
+          <div style="display:flex; align-items:center; gap:12px; width:100%;">
+            <div style="flex:1;">
+              <div style="display:flex; justify-content:space-between;">
+                <strong>${escapeHtml(req.method)}</strong>
+                <span class="history-status ${statusClass}">${req.status}</span>
+              </div>
+              <small>${date}</small>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:8px;">
+          <span>💰 ${req.amount} Coins</span>
+          <span>💵 ${fiatAmount} ${currency}</span>
+        </div>
+        <p style="margin-top:8px; font-size:0.75rem;">Account: ${escapeHtml(req.account || 'N/A').substring(0,30)}...</p>
+        ${req.status === 'Rejected' && req.rejectReason ? `<p style="color:#EF4444; font-size:0.75rem; margin-top:5px;">❌ ${escapeHtml(req.rejectReason)}</p>` : ''}
+      </div>`; 
     });
+    
     html += `</div>`;
     document.getElementById('global-popup-body').innerHTML = html;
     showModal('global-popup');
@@ -1050,66 +1372,113 @@
     document.getElementById('monetag-reward').innerText = appConfig.monetagReward || 10;
     document.getElementById('gigapub-reward').innerText = appConfig.gigapubReward || 10;
     
-    if(appConfig.monetagPhoto) document.getElementById('monetag-ad-img').src = appConfig.monetagPhoto;
-    if(appConfig.gigapubPhoto) document.getElementById('gigapub-ad-img').src = appConfig.gigapubPhoto;
+    // Update ad images from config
+    if(appConfig.monetagPhoto) {
+      document.getElementById('monetag-ad-img').src = appConfig.monetagPhoto;
+    }
+    if(appConfig.gigapubPhoto) {
+      document.getElementById('gigapub-ad-img').src = appConfig.gigapubPhoto;
+    }
     
     let moveBtn = document.getElementById('move-to-balance-btn');
     if(moveBtn) moveBtn.disabled = (userState.earningWallet || 0) < (appConfig.minWithdrawBalance || 100);
     
-    renderDailyCheckIn(); renderAdProgress(); renderReferralSection(); renderPendingWithdrawBanner();
+    renderDailyCheckIn(); 
+    renderAdProgress(); 
+    renderReferralSection();
+    renderPendingWithdrawBanner();
   }
-
+  
   async function renderDailyCheckIn(){
     let container = document.getElementById('daily-checkin-container');
     if(!container) return;
+    
     let today = new Date().toISOString().slice(0,10);
-    if(userState.lastCheckInDate === today){ container.innerHTML = ''; return; }
+    if(userState.lastCheckInDate === today){ 
+      container.innerHTML = ''; 
+      return; 
+    }
+    
     let streak = (userState.checkInStreak || 0) + 1;
     let reward = appConfig.dailyCheckinReward || 50;
     
-    container.innerHTML = `<div class="daily-checkin-card"><div><h3>Day ${streak} Check-in</h3><p>${today}</p></div><button id="start-checkin-btn" class="action-btn">🎁 Claim ${reward} Coins</button></div>`;
+    container.innerHTML = `
+      <div class="daily-checkin-card">
+        <div><h3>Day ${streak} Check-in</h3><p>${today}</p></div>
+        <button id="start-checkin-btn" class="action-btn">🎁 Claim ${reward} Coins</button>
+      </div>
+    `;
     
     document.getElementById('start-checkin-btn').onclick = async () => {
       userState.lastCheckInDate = today;
       userState.checkInStreak = streak;
       userState.earningWallet = (userState.earningWallet || 0) + reward;
       userState.totalEarned = (userState.totalEarned || 0) + reward;
-      await db.ref(`users/${tgUser.id}`).update({ lastCheckInDate: today, checkInStreak: streak, earningWallet: userState.earningWallet, totalEarned: userState.totalEarned });
+      
+      await db.ref(`users/${tgUser.id}`).update({ 
+        lastCheckInDate: today, 
+        checkInStreak: streak, 
+        earningWallet: userState.earningWallet, 
+        totalEarned: userState.totalEarned 
+      });
+      
       await addHistory('Daily Check-in', `Day ${streak} Reward`, reward, 'Completed');
       await processReferralEarnings(tgUser.id, reward, 'Daily Check-in');
       await sendAdminNotification(`🎁 Daily Check-in\nUser: ${userState.firstName} (${tgUser.id})\nReward: ${reward} Coins\nStreak: Day ${streak}`);
+      
       showAlert(`🎉 +${reward} Coins added!`);
       renderAll();
     };
   }
-
+  
   function renderAdProgress(){
     const monetagLimit = parseInt(appConfig.monetagDailyLimit) || 25;
     const gigapubLimit = parseInt(appConfig.gigapubDailyLimit) || 25;
     const monetagWatched = userState.monetagAdCount || 0;
     const gigapubWatched = userState.gigapubAdCount || 0;
     
-    document.getElementById('ad-progress-container').innerHTML = `<div class="progress-container"><div class="progress-info"><span>📺 Monetag Progress</span><span>${monetagWatched}/${monetagLimit}</span></div><div class="progress-bar-bg"><div class="progress-bar-fg" style="width:${(monetagWatched/monetagLimit)*100}%; background:linear-gradient(90deg, #FF6B6B, #FF8E53);"></div></div></div><div class="progress-container"><div class="progress-info"><span>🎮 Gigapub Progress</span><span>${gigapubWatched}/${gigapubLimit}</span></div><div class="progress-bar-bg"><div class="progress-bar-fg" style="width:${(gigapubWatched/gigapubLimit)*100}%; background:linear-gradient(90deg, #4FACFE, #00F2FE);"></div></div></div>`;
+    document.getElementById('ad-progress-container').innerHTML = `
+      <div class="progress-container">
+        <div class="progress-info"><span>📺 Monetag Progress</span><span>${monetagWatched}/${monetagLimit}</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar-fg" style="width:${(monetagWatched/monetagLimit)*100}%; background:linear-gradient(90deg, #FF6B6B, #FF8E53);"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-info"><span>🎮 Gigapub Progress</span><span>${gigapubWatched}/${gigapubLimit}</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar-fg" style="width:${(gigapubWatched/gigapubLimit)*100}%; background:linear-gradient(90deg, #4FACFE, #00F2FE);"></div></div>
+      </div>
+    `;
   }
-
+  
   async function moveToBalance(){
     let min = appConfig.minWithdrawBalance || 100;
     if((userState.earningWallet || 0) < min) return;
+    
     let amount = userState.earningWallet;
     await db.ref(`users/${tgUser.id}/balance`).transaction(v => (v||0) + amount);
     await db.ref(`users/${tgUser.id}/earningWallet`).set(0);
+    
     userState.balance = (userState.balance || 0) + amount;
     userState.earningWallet = 0;
+    
     renderAll();
     showAlert(`✅ ${amount} Coins moved to main balance!`);
   }
-
+  
   async function loadUserData(){
     let ref = db.ref(`users/${tgUser.id}`), snap = await ref.once('value'), data = snap.val();
     
     if(!data){
       let referralId = captureReferral();
-      data = { id: tgUser.id, firstName: tgUser.first_name || '', lastName: tgUser.last_name || '', username: tgUser.username || '', photoUrl: tgUser.photo_url || '', balance: 0, earningWallet: 0, referrals: 0, referredBy: referralId || null, totalEarned: 0, lifetimeAdCount: 0, monetagAdCount: 0, gigapubAdCount: 0, lastAdWatchDate: new Date().toISOString().slice(0,10), dailyAdCount: 0, completedTasks: {}, lastCheckInDate: "", checkInStreak: 0, timestamp: firebase.database.ServerValue.TIMESTAMP };
+      data = { 
+        id: tgUser.id, firstName: tgUser.first_name || '', lastName: tgUser.last_name || '', 
+        username: tgUser.username || '', photoUrl: tgUser.photo_url || '', 
+        balance: 0, earningWallet: 0, referrals: 0, referredBy: referralId || null, 
+        totalEarned: 0, lifetimeAdCount: 0, monetagAdCount: 0, gigapubAdCount: 0,
+        lastAdWatchDate: new Date().toISOString().slice(0,10), dailyAdCount: 0, 
+        completedTasks: {}, lastCheckInDate: "", checkInStreak: 0,
+        timestamp: firebase.database.ServerValue.TIMESTAMP
+      };
+      
       await ref.set(data);
       
       if(referralId && referralId != tgUser.id && appConfig.referralBonus){
@@ -1119,39 +1488,65 @@
           await db.ref(`users/${referralId}/referrals`).transaction(r => (r||0) + 1); 
           await db.ref(`users/${referralId}/totalEarned`).transaction(v => (v||0) + bonus);
           await sendAdminNotification(`👥 New Referral\nUser: ${tgUser.first_name} (${tgUser.id}) joined via ${referralId}\nBonus: ${bonus} Coins`); 
-        } else { await db.ref(`users/${referralId}/referrals`).transaction(r => (r||0) + 1); }
+        } else {
+          await db.ref(`users/${referralId}/referrals`).transaction(r => (r||0) + 1);
+        }
       }
+      
       await sendAdminNotification(`🆕 New User Joined!\n👤 ${tgUser.first_name} ${tgUser.last_name || ''}\n🆔 ${tgUser.id}\n📅 ${new Date().toLocaleString()}`);
     }
     
     let today = new Date().toISOString().slice(0,10);
     if(data.lastAdWatchDate !== today){ 
-      data.dailyAdCount = 0; data.monetagAdCount = 0; data.gigapubAdCount = 0;
+      data.dailyAdCount = 0;
+      data.monetagAdCount = 0;
+      data.gigapubAdCount = 0;
       await ref.update({ dailyAdCount: 0, monetagAdCount: 0, gigapubAdCount: 0, lastAdWatchDate: today }); 
     }
+    
     userState = data;
   }
-
+  
   async function enforceDeviceLock(uid){
     let stored = localStorage.getItem('device_id');
-    if(!stored){ stored = 'dev_' + Date.now() + '_' + Math.random().toString(36); localStorage.setItem('device_id', stored); }
+    if(!stored){ 
+      stored = 'dev_' + Date.now() + '_' + Math.random().toString(36); 
+      localStorage.setItem('device_id', stored); 
+    }
     let deviceId = stored.replace(/[^a-zA-Z0-9_-]/g, '_');
     let snap = await db.ref(`deviceLock/${deviceId}`).once('value');
-    if(snap.val() && snap.val() !== uid){ let msg = appConfig.devicePopupMessage || "This device is already linked to another account."; showAlert(msg, () => tg.close()); throw new Error("Device locked"); }
+    
+    if(snap.val() && snap.val() !== uid){ 
+      let msg = appConfig.devicePopupMessage || "This device is already linked to another account.";
+      showAlert(msg, () => tg.close()); 
+      throw new Error("Device locked"); 
+    }
     if(!snap.val()) await db.ref(`deviceLock/${deviceId}`).set(uid);
   }
-
+  
+  // Timer for countdowns
   setInterval(() => {
     updateAdButtonStates();
-    document.querySelectorAll('.countdown-timer').forEach(el => { let end = parseInt(el.dataset.end); if(end) { let rem = Math.max(0, Math.floor((end - Date.now())/1000)); el.innerText = formatTime(rem); } });
+    document.querySelectorAll('.countdown-timer').forEach(el => {
+      let end = parseInt(el.dataset.end);
+      if(end) {
+        let rem = Math.max(0, Math.floor((end - Date.now())/1000));
+        el.innerText = formatTime(rem);
+      }
+    });
   }, 1000);
-
+  
   async function initApp(){
-    tg.ready(); tg.expand();
+    tg.ready(); 
+    tg.expand();
+    
     document.body.className = (tg.colorScheme || 'light') + '-theme';
     tgUser = tg.initDataUnsafe?.user || null;
     
-    if(!tgUser){ document.getElementById('loader-screen').innerHTML = '<p>Error: Telegram user not found. Please open via Telegram.</p>'; return; }
+    if(!tgUser){ 
+      document.getElementById('loader-screen').innerHTML = '<p>Error: Telegram user not found. Please open via Telegram.</p>'; 
+      return; 
+    }
     
     const firebaseConfig = { apiKey: "AIzaSyB03K2JAA4iyBLgAX6Nv9Z0VMGX3qMGqBc", authDomain: "earnify-f3ac8.firebaseapp.com", databaseURL: "https://earnify-f3ac8-default-rtdb.firebaseio.com", projectId: "earnify-f3ac8", storageBucket: "earnify-f3ac8.firebasestorage.app", messagingSenderId: "273672601348", appId: "1:273672601348:web:4d627b5689575857345a51" };
     if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
@@ -1168,51 +1563,83 @@
     renderWebTasks();
     renderRegTasksPage();
     
-    setTimeout(() => { document.getElementById('loader-screen').style.display = 'none'; document.getElementById('app').style.display = 'block'; }, 500);
+    setTimeout(() => { 
+      document.getElementById('loader-screen').style.display = 'none'; 
+      document.getElementById('app').style.display = 'block'; 
+    }, 500);
     
     let sitePopup = appConfig.sitePopup;
     if(sitePopup && (sitePopup.title || sitePopup.description)){
       let imgHtml = sitePopup.image ? `<img src="${sitePopup.image}" style="max-width:100%; border-radius:16px; margin:10px 0;">` : '';
-      document.getElementById('global-popup-body').innerHTML = `<div style="text-align:center;"><h2>${escapeHtml(sitePopup.title || 'Welcome')}</h2>${imgHtml}<p>${escapeHtml(sitePopup.description || '')}</p><button class="action-btn close-modal" style="margin-top:16px;">Close</button></div>`;
+      document.getElementById('global-popup-body').innerHTML = `
+        <div style="text-align:center;">
+          <h2>${escapeHtml(sitePopup.title || 'Welcome')}</h2>
+          ${imgHtml}
+          <p>${escapeHtml(sitePopup.description || '')}</p>
+          <button class="action-btn close-modal" style="margin-top:16px;">Close</button>
+        </div>
+      `;
       showModal('global-popup');
       document.querySelector('#global-popup .close-modal').onclick = () => hideModal('global-popup');
     }
   }
-
-  document.querySelectorAll('.nav-btn').forEach(btn => { btn.addEventListener('click', () => { 
-    let pageId = btn.dataset.page; if(!pageId) return; 
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); 
-    document.getElementById(pageId)?.classList.add('active'); 
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); 
-    btn.classList.add('active');
-    if(pageId === 'tg-tasks-page') renderTgTasks();
-    else if(pageId === 'web-tasks-page') renderWebTasks();
-    else if(pageId === 'reg-tasks-page') renderRegTasksPage();
-    else if(pageId === 'home-page') { renderAdProgress(); renderDailyCheckIn(); }
-    else if(pageId === 'profile-page') renderReferralSection();
-  }); });
-
+  
+  // Event listeners
+  document.querySelectorAll('.nav-btn').forEach(btn => { 
+    btn.addEventListener('click', () => { 
+      let pageId = btn.dataset.page; 
+      if(!pageId) return; 
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); 
+      document.getElementById(pageId)?.classList.add('active'); 
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); 
+      btn.classList.add('active');
+      
+      // Refresh content when navigating
+      if(pageId === 'tg-tasks-page') renderTgTasks();
+      else if(pageId === 'web-tasks-page') renderWebTasks();
+      else if(pageId === 'reg-tasks-page') renderRegTasksPage();
+      else if(pageId === 'home-page') { renderAdProgress(); renderDailyCheckIn(); }
+      else if(pageId === 'profile-page') renderReferralSection();
+    }); 
+  });
+  
   document.getElementById('move-to-balance-btn').onclick = moveToBalance;
   document.getElementById('wallet-icon').onclick = () => {
     let bdtImg = appConfig.walletUI?.bdtPhoto || 'https://img.icons8.com/color/96/bangladesh.png';
     let usdtImg = appConfig.walletUI?.usdtPhoto || 'https://img.icons8.com/color/96/us-dollar.png';
     let historyImg = appConfig.walletUI?.historyPhoto || 'https://img.icons8.com/color/96/history.png';
     
-    document.getElementById('wallet-modal-body').innerHTML = `<div class="methods-grid-3"><div id="withdraw-bdt-card" class="method-card-item"><img src="${bdtImg}" onerror="this.src='https://via.placeholder.com/60'"><p style="margin-top:8px;">BDT Withdraw</p></div><div id="withdraw-usdt-card" class="method-card-item"><img src="${usdtImg}" onerror="this.src='https://via.placeholder.com/60'"><p style="margin-top:8px;">USDT Withdraw</p></div><div id="history-card" class="method-card-item"><img src="${historyImg}" onerror="this.src='https://via.placeholder.com/60'"><p style="margin-top:8px;">History</p></div></div>`;
+    document.getElementById('wallet-modal-body').innerHTML = `
+      <div class="methods-grid-3">
+        <div id="withdraw-bdt-card" class="method-card-item">
+          <img src="${bdtImg}" onerror="this.src='https://via.placeholder.com/60'">
+          <p style="margin-top:8px;">BDT Withdraw</p>
+        </div>
+        <div id="withdraw-usdt-card" class="method-card-item">
+          <img src="${usdtImg}" onerror="this.src='https://via.placeholder.com/60'">
+          <p style="margin-top:8px;">USDT Withdraw</p>
+        </div>
+        <div id="history-card" class="method-card-item">
+          <img src="${historyImg}" onerror="this.src='https://via.placeholder.com/60'">
+          <p style="margin-top:8px;">History</p>
+        </div>
+      </div>
+    `;
     showModal('wallet-modal');
     
     document.getElementById('withdraw-bdt-card').onclick = () => { hideModal('wallet-modal'); startWithdraw('bdt'); };
     document.getElementById('withdraw-usdt-card').onclick = () => { hideModal('wallet-modal'); startWithdraw('usdt'); };
     document.getElementById('history-card').onclick = () => { hideModal('wallet-modal'); showWithdrawHistory(); };
+    
     document.querySelector('#wallet-modal .close-modal').onclick = () => hideModal('wallet-modal');
   };
-
+  
   document.getElementById('support-top-icon').onclick = () => renderSupportLinksModal();
   document.getElementById('watch-monetag-btn').onclick = () => handleAdWatch('monetag');
   document.getElementById('watch-gigapub-btn').onclick = () => handleAdWatch('gigapub');
-
+  
   window.addEventListener('click', e => { if(e.target.classList?.contains('modal-overlay')) e.target.style.display = 'none'; });
-
+  
   initApp();
 })();
 </script>
